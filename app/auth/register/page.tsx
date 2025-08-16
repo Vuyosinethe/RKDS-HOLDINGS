@@ -104,14 +104,16 @@ export default function RegisterPage() {
         </div>
       </nav>
 
-      <div className="flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full">
           <Card>
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Create Account</CardTitle>
-              <CardDescription>Join RKDS Holdings for exclusive offers and faster checkout</CardDescription>
+            <CardHeader className="text-center px-4 sm:px-6">
+              <CardTitle className="text-xl sm:text-2xl">Create Account</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
+                Join RKDS Holdings for exclusive offers and faster checkout
+              </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-4 sm:px-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
                   <Alert variant="destructive">
@@ -119,30 +121,34 @@ export default function RegisterPage() {
                   </Alert>
                 )}
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName" className="text-sm">
+                      First Name
+                    </Label>
                     <div className="relative mt-1">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                       <Input
                         id="firstName"
                         value={formData.firstName}
                         onChange={(e) => handleInputChange("firstName", e.target.value)}
-                        className="pl-10"
+                        className="pl-10 h-11"
                         placeholder="First name"
                         required
                       />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName" className="text-sm">
+                      Last Name
+                    </Label>
                     <div className="relative mt-1">
                       <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                       <Input
                         id="lastName"
                         value={formData.lastName}
                         onChange={(e) => handleInputChange("lastName", e.target.value)}
-                        className="pl-10"
+                        className="pl-10 h-11"
                         placeholder="Last name"
                         required
                       />
@@ -151,7 +157,9 @@ export default function RegisterPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label htmlFor="email" className="text-sm">
+                    Email Address
+                  </Label>
                   <div className="relative mt-1">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -159,7 +167,7 @@ export default function RegisterPage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="pl-10"
+                      className="pl-10 h-11"
                       placeholder="Enter your email"
                       required
                     />
@@ -167,7 +175,9 @@ export default function RegisterPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Phone Number (Optional)</Label>
+                  <Label htmlFor="phone" className="text-sm">
+                    Phone Number (Optional)
+                  </Label>
                   <div className="relative mt-1">
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -175,14 +185,16 @@ export default function RegisterPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="pl-10"
+                      className="pl-10 h-11"
                       placeholder="+27 123 456 789"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password" className="text-sm">
+                    Password
+                  </Label>
                   <div className="relative mt-1">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -190,14 +202,14 @@ export default function RegisterPage() {
                       type={showPassword ? "text" : "password"}
                       value={formData.password}
                       onChange={(e) => handleInputChange("password", e.target.value)}
-                      className="pl-10 pr-10"
+                      className="pl-10 pr-12 h-11"
                       placeholder="Create a password"
                       required
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1"
                     >
                       {showPassword ? (
                         <EyeOff className="h-4 w-4 text-gray-400" />
@@ -209,7 +221,9 @@ export default function RegisterPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Label htmlFor="confirmPassword" className="text-sm">
+                    Confirm Password
+                  </Label>
                   <div className="relative mt-1">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -217,7 +231,7 @@ export default function RegisterPage() {
                       type="password"
                       value={formData.confirmPassword}
                       onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                      className="pl-10"
+                      className="pl-10 h-11"
                       placeholder="Confirm your password"
                       required
                     />
@@ -225,13 +239,14 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-start space-x-2">
                     <Checkbox
                       id="agreeToTerms"
                       checked={formData.agreeToTerms}
                       onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
+                      className="mt-0.5"
                     />
-                    <Label htmlFor="agreeToTerms" className="text-sm">
+                    <Label htmlFor="agreeToTerms" className="text-sm leading-5">
                       I agree to the{" "}
                       <Link href="/terms" className="text-black hover:underline">
                         Terms of Service
@@ -242,13 +257,14 @@ export default function RegisterPage() {
                       </Link>
                     </Label>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-start space-x-2">
                     <Checkbox
                       id="newsletter"
                       checked={formData.newsletter}
                       onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
+                      className="mt-0.5"
                     />
-                    <Label htmlFor="newsletter" className="text-sm">
+                    <Label htmlFor="newsletter" className="text-sm leading-5">
                       Subscribe to our newsletter for exclusive offers
                     </Label>
                   </div>
@@ -257,7 +273,7 @@ export default function RegisterPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-black hover:bg-gray-800 text-white"
+                  className="w-full bg-black hover:bg-gray-800 text-white h-12 text-base"
                   disabled={isLoading}
                 >
                   {isLoading ? "Creating Account..." : "Create Account"}

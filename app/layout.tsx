@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   creator: "RKDS Holdings",
   publisher: "RKDS Holdings",
   robots: "index, follow",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "en_ZA",
