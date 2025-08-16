@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/auth/", "/checkout/"],
     },
-    sitemap: "https://rkdsholdings.com/sitemap.xml",
+    sitemap: "https://rkdsholdings.co.za/sitemap.xml",
   }
 }

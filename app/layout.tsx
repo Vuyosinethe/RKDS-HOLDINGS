@@ -59,50 +59,101 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "RKDS Holdings",
-              description: "Premium iPhones, stylish sneakers, and professional tech repair services in South Africa",
-              url: "https://rkdsholdings.com",
-              logo: "https://rkdsholdings.com/images/rkds-logo.png",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+27-123-456-789",
-                contactType: "customer service",
-                areaServed: "ZA",
-                availableLanguage: "English",
-              },
-              sameAs: [
-                "https://facebook.com/rkdsholdings",
-                "https://twitter.com/rkdsholdings",
-                "https://instagram.com/rkdsholdings",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://rkdsholdings.co.za/#organization",
+                  name: "RKDS Holdings",
+                  alternateName: ["RKDS", "RKDS Holdings South Africa"],
+                  url: "https://rkdsholdings.co.za",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://rkdsholdings.co.za/images/rkds-logo.png",
+                    width: 120,
+                    height: 40,
+                  },
+                  description:
+                    "South Africa's premier destination for premium iPhones, designer sneakers, and professional tech repair services.",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "ZA",
+                    addressRegion: "South Africa",
+                  },
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+27-123-456-789",
+                    contactType: "customer service",
+                    email: "info@rkdsholdings.co.za",
+                  },
+                  sameAs: [
+                    "https://facebook.com/rkdsholdings",
+                    "https://twitter.com/rkdsholdings",
+                    "https://instagram.com/rkdsholdings",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://rkdsholdings.co.za/#website",
+                  url: "https://rkdsholdings.co.za",
+                  name: "RKDS Holdings",
+                  description: "Premium iPhones, Sneakers & Tech Repairs",
+                  publisher: {
+                    "@id": "https://rkdsholdings.co.za/#organization",
+                  },
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: "https://rkdsholdings.co.za/shop?q={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
+                },
+                {
+                  "@type": "Store",
+                  "@id": "https://rkdsholdings.co.za/#store",
+                  name: "RKDS Holdings",
+                  description:
+                    "Premium technology and lifestyle store specializing in iPhones, designer sneakers, and professional repair services.",
+                  url: "https://rkdsholdings.co.za",
+                  telephone: "+27-123-456-789",
+                  email: "info@rkdsholdings.co.za",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "ZA",
+                  },
+                  openingHours: "Mo-Su 08:00-20:00",
+                  paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
+                  currenciesAccepted: "ZAR",
+                  hasOfferCatalog: {
+                    "@type": "OfferCatalog",
+                    name: "RKDS Holdings Products",
+                    itemListElement: [
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Product",
+                          name: "Premium iPhones",
+                          category: "Electronics",
+                        },
+                      },
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Product",
+                          name: "Designer Sneakers",
+                          category: "Footwear",
+                        },
+                      },
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Tech Repair Services",
+                          category: "Repair",
+                        },
+                      },
+                    ],
+                  },
+                },
               ],
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "RKDS Holdings Products",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Product",
-                      name: "iPhone Collection",
-                      category: "Electronics",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Product",
-                      name: "Premium Sneakers",
-                      category: "Footwear",
-                    },
-                  },
-                  {
-                    "@type": "Service",
-                    name: "Tech Repair Services",
-                    description: "Professional device repair with house calls available for R49",
-                  },
-                ],
-              },
             }),
           }}
         />
