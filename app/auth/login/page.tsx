@@ -51,9 +51,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       {/* Main Navigation */}
-      <nav className="bg-black text-white sticky top-0 z-50 overflow-visible">
+      <nav className="bg-black text-white sticky top-0 z-50 overflow-visible border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -280,24 +280,36 @@ export default function LoginPage() {
         </div>
       </nav>
 
-      <div className="bg-blue-600 text-white py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-medium">Get the Fastest delivery for Free. Shop online at RKDS Holdings!</p>
-        </div>
-      </div>
-
       {/* Login Form Content */}
       <div className="flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
+          {/* RKDS Branding Section */}
+          <div className="text-center">
+            <div className="mb-8">
+              <Image
+                src="/images/rkds-logo.png"
+                alt="RKDS Holdings"
+                width={200}
+                height={60}
+                className="mx-auto h-16 w-auto"
+              />
+              <div className="mt-4">
+                <h1 className="text-4xl font-bold text-white tracking-wider">RKDS</h1>
+                <p className="text-gray-400 text-sm font-medium tracking-wide">HOLDINGS</p>
+              </div>
+            </div>
+          </div>
+
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">Sign in to your account</h2>
+            <p className="mt-2 text-center text-sm text-gray-400">
               Or{" "}
-              <Link href="/auth/register" className="font-medium text-blue-600 hover:text-blue-500">
+              <Link href="/auth/register" className="font-medium text-white hover:text-gray-300 underline">
                 create a new account
               </Link>
             </p>
           </div>
+
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -310,7 +322,7 @@ export default function LoginPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-600 placeholder-gray-400 text-white bg-gray-900 rounded-t-md focus:outline-none focus:ring-2 focus:ring-white focus:border-white focus:z-10 sm:text-sm"
                   placeholder="Email address"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
@@ -326,7 +338,7 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-3 pr-10 border border-gray-600 placeholder-gray-400 text-white bg-gray-900 rounded-b-md focus:outline-none focus:ring-2 focus:ring-white focus:border-white focus:z-10 sm:text-sm"
                   placeholder="Password"
                   value={formData.password}
                   onChange={(e) => handleInputChange("password", e.target.value)}
@@ -337,7 +349,12 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg
+                      className="h-5 w-5 text-gray-400 hover:text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -346,7 +363,12 @@ export default function LoginPage() {
                       />
                     </svg>
                   ) : (
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg
+                      className="h-5 w-5 text-gray-400 hover:text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -366,8 +388,8 @@ export default function LoginPage() {
             </div>
 
             {error && (
-              <div className="rounded-md bg-red-50 p-4">
-                <div className="text-sm text-red-700">{error}</div>
+              <div className="rounded-md bg-gray-900 border border-gray-600 p-4">
+                <div className="text-sm text-red-400">{error}</div>
               </div>
             )}
 
@@ -375,14 +397,14 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative w-full flex justify-center py-3 px-4 border-2 border-white text-sm font-medium rounded-md text-black bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? "Signing in..." : "Sign in"}
               </button>
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-gray-600">Demo credentials: demo@rkdsholdings.co.za / password123</p>
+              <p className="text-sm text-gray-400">Demo credentials: demo@rkdsholdings.co.za / password123</p>
             </div>
           </form>
         </div>
