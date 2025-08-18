@@ -68,7 +68,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.9,
       reviews: 312,
       description: "The ultimate iPhone with titanium design, A18 Pro chip, and advanced camera system.",
-      image: "/placeholder.svg?height=400&width=400",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2013%20%285%29-CkeDd4HHovfnbGmHvfW1R7MQDxJuDl.jpeg",
       storageOptions: ["128GB", "256GB", "512GB", "1TB"],
       storagePrices: { "128GB": 21999, "256GB": 24999, "512GB": 30999, "1TB": 36999 },
       specifications: {
@@ -90,7 +91,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.7,
       reviews: 289,
       description: "The new iPhone 16 with A18 chip and enhanced camera capabilities.",
-      image: "/placeholder.svg?height=400&width=400",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%285%29-FuxL48fQVqppx9lrLA46yyPh4KWxwn.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 18999, "256GB": 21999, "512GB": 27999 },
       specifications: {
@@ -112,7 +114,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.8,
       reviews: 456,
       description: "iPhone 15 Pro with titanium design and A17 Pro chip.",
-      image: "/placeholder.svg?height=400&width=400",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%282%29-VMEBNNPOaKUu7esnxhlbRgJAXtkp2q.jpeg",
       storageOptions: ["128GB", "256GB", "512GB", "1TB"],
       storagePrices: { "128GB": 19999, "256GB": 22999, "512GB": 28999, "1TB": 34999 },
       specifications: {
@@ -134,7 +137,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.6,
       reviews: 378,
       description: "iPhone 15 with Dynamic Island and advanced dual-camera system.",
-      image: "/placeholder.svg?height=400&width=400",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%284%29-z4Z9WW1fLuwHlfiBv0nvK6TNtikDgv.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 16999, "256GB": 19999, "512GB": 25999 },
       specifications: {
@@ -156,7 +160,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.7,
       reviews: 523,
       description: "iPhone 14 Pro with Dynamic Island and A16 Bionic chip.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/iphone-14-midnight.jpeg",
       storageOptions: ["128GB", "256GB", "512GB", "1TB"],
       storagePrices: { "128GB": 17999, "256GB": 20999, "512GB": 26999, "1TB": 32999 },
       specifications: {
@@ -178,7 +182,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.5,
       reviews: 445,
       description: "iPhone 14 with advanced dual-camera system and A15 Bionic chip.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/iphone-14-starlight.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 14999, "256GB": 17999, "512GB": 23999 },
       specifications: {
@@ -200,7 +204,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.4,
       reviews: 612,
       description: "iPhone 13 with A15 Bionic chip and dual-camera system.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/iphone-13-starlight.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 12999, "256GB": 15999, "512GB": 21999 },
       specifications: {
@@ -333,7 +337,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.5,
       reviews: 67,
       description: "iPhone 14 with advanced dual-camera system and A15 Bionic chip.",
-      image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%285%29-FuxL48fQVqppx9lrLA46yyPh4KWxwn.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 14999, "256GB": 17999, "512GB": 23999 },
       specifications: {
