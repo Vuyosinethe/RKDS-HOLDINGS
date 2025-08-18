@@ -787,8 +787,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     if (product) {
       if (product.colorOptions && product.colorOptions.length > 0) {
-        setSelectedColor(product.colorOptions[0].value)
-        setCurrentImage(product.colorOptions[0].image)
+        const defaultColor = product.colorOptions[0]
+        setSelectedColor(defaultColor.value)
+        setCurrentImage(defaultColor.image)
       } else {
         setCurrentImage(product.image)
       }
