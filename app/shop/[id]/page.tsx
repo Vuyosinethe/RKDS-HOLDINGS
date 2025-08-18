@@ -840,13 +840,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       variant = selectedSize
     } else if (product.storageOptions && selectedStorage) {
       variant = selectedStorage
+    } else if (product.colorOptions && selectedColor) {
+      const selectedColorOption = product.colorOptions.find((color) => color.value === selectedColor)
+      variant = selectedColorOption?.name || selectedColor
     }
 
     addItem({
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image,
+      image: currentImage || product.image,
+      category: product.category,
       variant: variant,
     })
   }
