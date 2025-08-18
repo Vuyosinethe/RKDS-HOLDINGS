@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -39,12 +39,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
-  const [selectedStorage, setSelectedStorage] = useState("")
   const [selectedSize, setSelectedSize] = useState("")
+  const [selectedStorage, setSelectedStorage] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [expandedIPhone, setExpandedIPhone] = useState<string | null>(null)
   const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null)
   const [mobileExpandedIPhone, setMobileExpandedIPhone] = useState<string | null>(null)
+  const [selectedColor, setSelectedColor] = useState("")
+  const [currentImage, setCurrentImage] = useState("")
 
   const { items, addItem } = useCart()
   const { handleButtonClick } = useButtonHandler()
@@ -781,6 +783,33 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   ]
 
   const product = products.find((p) => String(p.id) === String(params.id))
+
+  useEffect(() => {
+    if (product) {
+      if (product.colorOptions && product.colorOptions.length > 0) {
+        setSelectedColor(product.colorOptions[0].value)
+        setCurrentImage(product.colorOptions[0].image)
+      } else {
+        setCurrentImage(product.image)
+      }
+    }
+  }, [product])
+
+  const handleColorChange = (colorValue: string) => {
+    setSelectedColor(colorValue)
+    const selectedColorOption = product.colorOptions?.find((color) => color.value === colorValue)
+    if (selectedColorOption) {
+      setCurrentImage(selectedColorOption.image)
+    }
+  }
+
+  const getCurrentColorImages = () => {
+    if (product.colorOptions && selectedColor) {
+      const selectedColorOption = product.colorOptions.find((color) => color.value === selectedColor)
+      return selectedColorOption?.images || [product.image]
+    }
+    return product.images || [product.image]
+  }
 
   if (!product) {
     return (
@@ -1520,8 +1549,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Image */}
-          <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-            <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-full object-cover" />
+          <div className="space-y-4">
+            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+              <img
+                src={currentImage || product.image || "/placeholder.svg"}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="grid grid-cols-4 gap-2">
+              {getCurrentColorImages().map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImage(image)}
+                  className={`aspect-square bg-gray-100 rounded-lg overflow-hidden border-2 ${
+                    currentImage === image ? "border-black" : "border-transparent"
+                  }`}
+                >
+                  <img
+                    src={image || "/placeholder.svg"}
+                    alt={`${product.name} view ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Product Info */}
@@ -1547,6 +1600,27 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
             {/* Price */}
             <div className="text-3xl font-bold text-gray-900 mb-6">R{product.price.toLocaleString()}</div>
+
+            {product.colorOptions && (
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">Color</label>
+                <div className="flex gap-2">
+                  {product.colorOptions.map((color) => (
+                    <button
+                      key={color.value}
+                      onClick={() => handleColorChange(color.value)}
+                      className={`px-4 py-2 border rounded-lg font-medium transition-colors ${
+                        selectedColor === color.value
+                          ? "border-black bg-black text-white"
+                          : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+                      }`}
+                    >
+                      {color.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Size Selection for Shoes */}
             {product.category === "shoes" && product.sizes && (
