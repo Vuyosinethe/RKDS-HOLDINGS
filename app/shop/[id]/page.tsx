@@ -788,13 +788,21 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     if (product) {
       if (product.colorOptions && product.colorOptions.length > 0) {
         const defaultColor = product.colorOptions[0]
-        setSelectedColor(defaultColor.value)
-        setCurrentImage(defaultColor.image)
+        // Only set default values if they haven't been set yet
+        if (!selectedColor) {
+          setSelectedColor(defaultColor.value)
+        }
+        if (!currentImage) {
+          setCurrentImage(defaultColor.image)
+        }
       } else {
-        setCurrentImage(product.image)
+        // Only set default image if currentImage hasn't been set yet
+        if (!currentImage) {
+          setCurrentImage(product.image)
+        }
       }
     }
-  }, [product])
+  }, [product, selectedColor, currentImage])
 
   const handleColorChange = (colorValue: string) => {
     setSelectedColor(colorValue)
