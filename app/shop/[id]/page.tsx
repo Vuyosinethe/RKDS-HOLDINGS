@@ -159,19 +159,25 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       price: 17999,
       rating: 4.7,
       reviews: 523,
-      description: "iPhone 14 Pro with Dynamic Island and A16 Bionic chip.",
-      image: "/images/iphone-14-midnight.jpeg",
+      description: "iPhone 14 Pro with Dynamic Island, A16 Bionic chip, and Pro camera system.",
+      image: "/images/iphone-14-midnight-full.jpeg",
+      images: [
+        "/images/iphone-14-midnight-full.jpeg",
+        "/images/iphone-14-starlight-full.jpeg",
+        "/images/iphone-14-sierra-blue-full.jpeg",
+        "/images/iphone-14-pink-full.jpeg",
+      ],
       storageOptions: ["128GB", "256GB", "512GB", "1TB"],
       storagePrices: { "128GB": 17999, "256GB": 20999, "512GB": 26999, "1TB": 32999 },
       specifications: {
-        Display: "6.1-inch Super Retina XDR",
+        Display: "6.1-inch Super Retina XDR with ProMotion",
         Chip: "A16 Bionic",
         Camera: "48MP Main, 12MP Ultra Wide, 12MP Telephoto",
         Battery: "Up to 23 hours video playback",
         Storage: "128GB, 256GB, 512GB, 1TB",
       },
       inStock: true,
-      stockCount: 25,
+      stockCount: 35,
     },
     {
       id: "iphone-14",
@@ -182,7 +188,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.5,
       reviews: 445,
       description: "iPhone 14 with advanced dual-camera system and A15 Bionic chip.",
-      image: "/images/iphone-14-starlight.jpeg",
+      image: "/images/iphone-14-midnight-full.jpeg",
+      images: [
+        "/images/iphone-14-midnight-full.jpeg",
+        "/images/iphone-14-starlight-full.jpeg",
+        "/images/iphone-14-sierra-blue-full.jpeg",
+        "/images/iphone-14-pink-full.jpeg",
+      ],
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 14999, "256GB": 17999, "512GB": 23999 },
       specifications: {
@@ -204,7 +216,37 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.4,
       reviews: 612,
       description: "iPhone 13 with A15 Bionic chip and dual-camera system.",
-      image: "/images/iphone-13-starlight.jpeg",
+      image: "/images/iphone-13-starlight-full.jpeg",
+      images: [
+        "/images/iphone-13-midnight-full.jpeg",
+        "/images/iphone-13-starlight-full.jpeg",
+        "/images/iphone-13-midnight-camera.jpeg",
+        "/images/iphone-13-starlight-camera.jpeg",
+        "/images/iphone-13-midnight-angled.jpeg",
+        "/images/iphone-13-starlight-angled.jpeg",
+      ],
+      colorOptions: [
+        {
+          name: "Midnight",
+          value: "midnight",
+          image: "/images/iphone-13-midnight-full.jpeg",
+          images: [
+            "/images/iphone-13-midnight-full.jpeg",
+            "/images/iphone-13-midnight-camera.jpeg",
+            "/images/iphone-13-midnight-angled.jpeg",
+          ],
+        },
+        {
+          name: "Starlight",
+          value: "starlight",
+          image: "/images/iphone-13-starlight-full.jpeg",
+          images: [
+            "/images/iphone-13-starlight-full.jpeg",
+            "/images/iphone-13-starlight-camera.jpeg",
+            "/images/iphone-13-starlight-angled.jpeg",
+          ],
+        },
+      ],
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 12999, "256GB": 15999, "512GB": 21999 },
       specifications: {
@@ -337,8 +379,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.5,
       reviews: 67,
       description: "iPhone 14 with advanced dual-camera system and A15 Bionic chip.",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%285%29-FuxL48fQVqppx9lrLA46yyPh4KWxwn.jpeg",
+      image: "/images/iphone-14-midnight-full.jpeg",
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 14999, "256GB": 17999, "512GB": 23999 },
       specifications: {
