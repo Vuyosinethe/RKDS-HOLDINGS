@@ -349,6 +349,100 @@ export default function HomePageClient() {
                               <div
                                 className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
                                 onClick={() =>
+                                  setExpandedIPhone(expandedIPhone === "iphone-16-plus" ? null : "iphone-16-plus")
+                                }
+                              >
+                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
+                                <span className="flex-1 font-medium">iPhone 16 Plus</span>
+                                <span className="text-gray-400 text-xs mr-2">From R20,999</span>
+                                <ChevronDown
+                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-16-plus" ? "rotate-180" : ""}`}
+                                />
+                              </div>
+                              {expandedIPhone === "iphone-16-plus" && (
+                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
+                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
+                                  <Link
+                                    href="/shop/iphone-16-plus?storage=128gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">128GB</span>
+                                      <span className="text-green-400 font-medium">R20,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-16-plus?storage=256gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">256GB</span>
+                                      <span className="text-green-400 font-medium">R23,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-16-plus?storage=512gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">512GB</span>
+                                      <span className="text-green-400 font-medium">R28,999</span>
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </li>
+
+                            <li className="group">
+                              <div
+                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
+                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-16e" ? null : "iphone-16e")}
+                              >
+                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
+                                <span className="flex-1 font-medium">iPhone 16e</span>
+                                <span className="text-gray-400 text-xs mr-2">From R16,999</span>
+                                <ChevronDown
+                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-16e" ? "rotate-180" : ""}`}
+                                />
+                              </div>
+                              {expandedIPhone === "iphone-16e" && (
+                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
+                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
+                                  <Link
+                                    href="/shop/iphone-16e?storage=128gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">128GB</span>
+                                      <span className="text-green-400 font-medium">R16,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-16e?storage=256gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">256GB</span>
+                                      <span className="text-green-400 font-medium">R19,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-16e?storage=512gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">512GB</span>
+                                      <span className="text-green-400 font-medium">R24,999</span>
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </li>
+
+                            <li className="group">
+                              <div
+                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
+                                onClick={() =>
                                   setExpandedIPhone(expandedIPhone === "iphone-15-pro" ? null : "iphone-15-pro")
                                 }
                               >
@@ -433,6 +527,54 @@ export default function HomePageClient() {
                                     <div className="flex justify-between items-center">
                                       <span className="text-white">512GB</span>
                                       <span className="text-green-400 font-medium">R24,999</span>
+                                    </div>
+                                  </Link>
+                                </div>
+                              )}
+                            </li>
+
+                            <li className="group">
+                              <div
+                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
+                                onClick={() =>
+                                  setExpandedIPhone(expandedIPhone === "iphone-15-plus" ? null : "iphone-15-plus")
+                                }
+                              >
+                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
+                                <span className="flex-1 font-medium">iPhone 15 Plus</span>
+                                <span className="text-gray-400 text-xs mr-2">From R18,999</span>
+                                <ChevronDown
+                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-15-plus" ? "rotate-180" : ""}`}
+                                />
+                              </div>
+                              {expandedIPhone === "iphone-15-plus" && (
+                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
+                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
+                                  <Link
+                                    href="/shop/iphone-15-plus?storage=128gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">128GB</span>
+                                      <span className="text-green-400 font-medium">R18,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-15-plus?storage=256gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">256GB</span>
+                                      <span className="text-green-400 font-medium">R21,999</span>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/shop/iphone-15-plus?storage=512gb"
+                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
+                                  >
+                                    <div className="flex justify-between items-center">
+                                      <span className="text-white">512GB</span>
+                                      <span className="text-green-400 font-medium">R26,999</span>
                                     </div>
                                   </Link>
                                 </div>
@@ -1225,8 +1367,11 @@ export default function HomePageClient() {
                         {[
                           { name: "iPhone 16 Pro", price: "R21,999", id: "iphone-16-pro" },
                           { name: "iPhone 16", price: "R18,999", id: "iphone-16" },
+                          { name: "iPhone 16 Plus", price: "R20,999", id: "iphone-16-plus" },
+                          { name: "iPhone 16e", price: "R16,999", id: "iphone-16e" },
                           { name: "iPhone 15 Pro", price: "R19,999", id: "iphone-15-pro" },
                           { name: "iPhone 15", price: "R16,999", id: "iphone-15" },
+                          { name: "iPhone 15 Plus", price: "R18,999", id: "iphone-15-plus" },
                           { name: "iPhone 14 Pro", price: "R17,999", id: "iphone-14-pro" },
                           { name: "iPhone 14", price: "R14,999", id: "iphone-14" },
                           { name: "iPhone 13", price: "R12,999", id: "iphone-13" },
