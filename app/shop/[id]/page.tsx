@@ -1139,8 +1139,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                           <ul className="space-y-2 text-sm">
                             {[
                               { name: "iPhone 16 Pro", price: "R21,999", id: "iphone-16-pro" },
+                              { name: "iPhone 16 Plus", price: "R22,999", id: "iphone-16-plus" },
                               { name: "iPhone 16", price: "R18,999", id: "iphone-16" },
+                              { name: "iPhone 16e", price: "R7,999", id: "iphone-16e" },
                               { name: "iPhone 15 Pro", price: "R19,999", id: "iphone-15-pro" },
+                              { name: "iPhone 15 Plus", price: "R18,999", id: "iphone-15-plus" },
                               { name: "iPhone 15", price: "R16,999", id: "iphone-15" },
                               { name: "iPhone 14 Pro", price: "R17,999", id: "iphone-14-pro" },
                               { name: "iPhone 14", price: "R14,999", id: "iphone-14" },
