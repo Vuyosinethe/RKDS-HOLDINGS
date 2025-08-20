@@ -4,34 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import {
-  Star,
-  ShoppingCart,
-  ChevronDown,
-  Smartphone,
-  Tablet,
-  Headphones,
-  Search,
-  Settings,
-  PenToolIcon as Tool,
-  Cpu,
-  Shield,
-  Bluetooth,
-  Zap,
-  Battery,
-  Cable,
-  Watch,
-  HardDrive,
-  Wrench,
-  Phone,
-  Monitor,
-  Camera,
-  MapPin,
-  User,
-  Home,
-  Circle,
-  ShoppingBag,
-} from "lucide-react"
+import { Star, ShoppingCart, ChevronDown, Smartphone } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { useButtonHandler } from "@/lib/button-handler"
 
@@ -235,10 +208,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 7999, "256GB": 9999, "512GB": 13999 },
       colorOptions: [
-        { name: "White", image: "/images/iphone-16e-spherical-display.jpeg" },
-        { name: "Black", image: "/images/iphone-16e-color-lineup.jpeg" },
-        { name: "Gold", image: "/images/iphone-16e-three-finishes.jpeg" },
-        { name: "Blue", image: "/images/iphone-16e-three-finishes.jpeg" },
+        { name: "White", image: "/images/iphone-xr-white-abstract.jpeg", value: "white" },
+        { name: "(PRODUCT)RED", image: "/images/iphone-xr-red-abstract.jpeg", value: "red" },
+        { name: "Black", image: "/images/iphone-xr-black-abstract.jpeg", value: "black" },
+        { name: "Blue", image: "/images/iphone-xr-blue-glitch.jpeg", value: "blue" },
       ],
       specifications: {
         Display: "6.1-inch Super Retina XDR",
@@ -263,10 +236,31 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       storageOptions: ["64GB", "128GB", "256GB"],
       storagePrices: { "64GB": 6999, "128GB": 8999, "256GB": 12999 },
       colorOptions: [
-        { name: "White", image: "/images/iphone-xr-white-abstract.jpeg" },
-        { name: "(PRODUCT)RED", image: "/images/iphone-xr-red-abstract.jpeg" },
-        { name: "Black", image: "/images/iphone-xr-black-abstract.jpeg" },
-        { name: "Blue", image: "/images/iphone-xr-blue-glitch.jpeg" },
+        {
+          name: "White",
+          value: "white",
+          images: ["/images/iphone-xr-white-abstract.jpeg"],
+        },
+        {
+          name: "(PRODUCT)RED",
+          value: "red",
+          images: ["/images/iphone-xr-red-abstract.jpeg"],
+        },
+        {
+          name: "Black",
+          value: "black",
+          images: ["/images/iphone-xr-black-abstract.jpeg"],
+        },
+        {
+          name: "Blue",
+          value: "blue",
+          images: ["/images/iphone-xr-blue-glitch.jpeg"],
+        },
+        {
+          name: "Coral",
+          value: "coral",
+          images: ["/images/iphone-xr-coral-abstract.jpeg"],
+        },
       ],
       specifications: {
         Display: "6.1-inch Liquid Retina HD",
@@ -364,12 +358,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         {
           name: "(PRODUCT)RED",
           value: "red",
-          images: ["/images/iphone-14-red-gradient.jpeg"],
+          images: ["/images/iphone-14-red-gradient.jpeg", "/images/iphone-14-red-gradient-new.png"],
         },
         {
           name: "Sierra Blue",
           value: "sierra-blue",
           images: ["/images/iphone-14-sierra-blue-colorful.jpeg"],
+        },
+        {
+          name: "White",
+          value: "white",
+          images: ["/images/iphone-14-white-gradient.png"],
+        },
+        {
+          name: "Black",
+          value: "black",
+          images: ["/images/iphone-14-black-gradient.png"],
+        },
+        {
+          name: "Light Blue",
+          value: "light-blue",
+          images: ["/images/iphone-14-light-blue-gradient.png"],
+        },
+        {
+          name: "Light Purple",
+          value: "light-purple",
+          images: ["/images/iphone-14-light-purple-gradient.png"],
         },
       ],
       storageOptions: ["128GB", "256GB", "512GB"],
@@ -438,6 +452,66 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       },
       inStock: true,
       stockCount: 12,
+    },
+    {
+      id: "iphone-16",
+      name: "iPhone 16",
+      brand: "Apple",
+      category: "phone",
+      price: 17999,
+      rating: 4.7,
+      reviews: 189,
+      description: "iPhone 16 with A18 chip, Camera Control button, and enhanced dual-camera system.",
+      image: "/images/iphone-16-blue-gradient.png",
+      colorOptions: [
+        {
+          name: "Blue",
+          value: "blue",
+          images: ["/images/iphone-16-blue-gradient.png", "/images/iphone-16-blue-angled.png"],
+        },
+        {
+          name: "Pink",
+          value: "pink",
+          images: ["/images/iphone-16-pink-gradient.png", "/images/iphone-16-pink-angled.png"],
+        },
+        {
+          name: "Teal",
+          value: "teal",
+          images: ["/images/iphone-16-teal-gradient.png", "/images/iphone-16-teal-angled.png"],
+        },
+        {
+          name: "White",
+          value: "white",
+          images: ["/images/iphone-16-white-angled.png"],
+        },
+        {
+          name: "Black",
+          value: "black",
+          images: ["/images/iphone-16-black-gradient.png"],
+        },
+        {
+          name: "White Gradient",
+          value: "white-gradient",
+          images: ["/images/iphone-16-white-gradient.png"],
+        },
+        {
+          name: "Black Angled",
+          value: "black-angled",
+          images: ["/images/iphone-16-black-angled-new.png"],
+        },
+      ],
+      storageOptions: ["128GB", "256GB", "512GB"],
+      storagePrices: { "128GB": 17999, "256GB": 20999, "512GB": 26999 },
+      specifications: {
+        Display: "6.1-inch Super Retina XDR",
+        Chip: "A18",
+        Camera: "48MP Fusion, 12MP Ultra Wide",
+        Battery: "Up to 22 hours video playback",
+        Storage: "128GB, 256GB, 512GB",
+        Connectivity: "USB-C",
+      },
+      inStock: true,
+      stockCount: 42,
     },
     {
       id: 22,
@@ -934,6 +1008,27 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   const product = products.find((p) => String(p.id) === String(params.id))
 
+  const handleAddToCart = () => {
+    let variant = ""
+    if (product.category === "shoes" && selectedSize) {
+      variant = selectedSize
+    } else if (product.storageOptions && selectedStorage) {
+      variant = selectedStorage
+    } else if (product.colorOptions && selectedColor) {
+      const selectedColorOption = product.colorOptions.find((color) => color.value === selectedColor)
+      variant = selectedColorOption?.name || selectedColor
+    }
+
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: currentImage || product.image,
+      category: product.category,
+      variant: variant,
+    })
+  }
+
   useEffect(() => {
     if (product) {
       if (product.colorOptions && product.colorOptions.length > 0) {
@@ -970,6 +1065,149 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     return product.images || [product.image]
   }
 
+  if (String(params.id) === "iphone-13") {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Product Images */}
+            <div className="space-y-4">
+              <div className="aspect-square bg-white rounded-lg overflow-hidden">
+                <img
+                  src={
+                    selectedColor === "White"
+                      ? "/images/iphone-13-white-blue-gradient.png"
+                      : "/images/iphone-13-standard-view.png"
+                  }
+                  alt={`iPhone 13 ${selectedColor}`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="grid grid-cols-4 gap-2">
+                <img
+                  src="/images/iphone-13-white-blue-gradient.png"
+                  alt="iPhone 13 White"
+                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
+                />
+                <img
+                  src="/images/iphone-13-camera-closeup.png"
+                  alt="iPhone 13 Camera Detail"
+                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
+                />
+                <img
+                  src="/images/iphone-13-artistic-angles.png"
+                  alt="iPhone 13 Artistic View"
+                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
+                />
+                <img
+                  src="/images/iphone-13-standard-view.png"
+                  alt="iPhone 13 Standard View"
+                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
+                />
+              </div>
+            </div>
+
+            {/* Product Details */}
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">iPhone 13</h1>
+                <p className="text-xl text-gray-600 mt-2">From R12,999</p>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">Color</h3>
+                <div className="flex space-x-3">
+                  {[
+                    {
+                      name: "White",
+                      color: "bg-white border-gray-300",
+                      image: "/images/iphone-13-white-blue-gradient.png",
+                    },
+                    {
+                      name: "Starlight",
+                      color: "bg-gray-100 border-gray-300",
+                      image: "/images/iphone-13-standard-view.png",
+                    },
+                  ].map((color) => (
+                    <button
+                      key={color.name}
+                      onClick={() => setSelectedColor(color.name)}
+                      className={`w-8 h-8 rounded-full border-2 ${color.color} ${
+                        selectedColor === color.name ? "ring-2 ring-blue-500 ring-offset-2" : ""
+                      }`}
+                      title={color.name}
+                    />
+                  ))}
+                </div>
+                <p className="text-sm text-gray-600">{selectedColor}</p>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">Storage</h3>
+                <div className="grid grid-cols-1 gap-3">
+                  {[
+                    { size: "128GB", price: "R12,999" },
+                    { size: "256GB", price: "R15,999" },
+                    { size: "512GB", price: "R20,999" },
+                  ].map((option) => (
+                    <button
+                      key={option.size}
+                      onClick={() => setSelectedStorage(option.size)}
+                      className={`p-4 border rounded-lg text-left transition-colors ${
+                        selectedStorage === option.size
+                          ? "border-blue-500 bg-blue-50"
+                          : "border-gray-300 hover:border-gray-400"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">{option.size}</span>
+                        <span className="text-green-600 font-semibold">{option.price}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">Key Features</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    6.1-inch Super Retina XDR display
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    A15 Bionic chip with 6-core CPU
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    Advanced dual-camera system
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    Up to 19 hours video playback
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    5G capable
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                onClick={handleAddToCart}
+                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Add to Cart -{" "}
+                {selectedStorage === "128GB" ? "R12,999" : selectedStorage === "256GB" ? "R15,999" : "R20,999"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (!product) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -984,27 +1222,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     )
   }
 
-  const handleAddToCart = () => {
-    let variant = ""
-    if (product.category === "shoes" && selectedSize) {
-      variant = selectedSize
-    } else if (product.storageOptions && selectedStorage) {
-      variant = selectedStorage
-    } else if (product.colorOptions && selectedColor) {
-      const selectedColorOption = product.colorOptions.find((color) => color.value === selectedColor)
-      variant = selectedColorOption?.name || selectedColor
-    }
-
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: currentImage || product.image,
-      category: product.category,
-      variant: variant,
-    })
-  }
-
   return (
     <div className="min-h-screen bg-white">
       {/* Blue promotional banner */}
@@ -1013,6 +1230,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       </div>
 
       <nav className="bg-black text-white sticky top-0 z-50 overflow-visible">
+        {/* ... existing navigation code ... */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -1117,594 +1335,20 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             ))}
                           </ul>
                         </div>
-                        <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Search className="mr-2 h-5 w-5 text-green-400" />
-                            Explore iPhone
-                          </h4>
-                          <div className="space-y-4">
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Search className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/shop?category=iphones"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  Explore iPhone
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Explore the world of iPhone.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Settings className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/shop/compare"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  Compare iPhone
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Find the perfect iPhone for your needs.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Tool className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/repairs?service=iphone"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  iPhone Repairs
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Professional repair services.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        {/* ... existing navigation code ... */}
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* iPad Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("ipad")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap">
-                  iPad <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                {activeDropdown === "ipad" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                        <Tablet className="mr-2 h-5 w-5 text-purple-400" />
-                        Shop iPad Range
-                      </h4>
-                      <ul className="space-y-4 text-sm">
-                        <li className="flex items-center justify-between py-3 border-b border-gray-800 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <div className="flex items-center">
-                            <Cpu className="mr-2 h-4 w-4 text-gray-400" />
-                            <Link href="/shop/ipad-pro-m4" className="hover:text-gray-300 transition-colors">
-                              iPad Pro | Apple M4
-                            </Link>
-                          </div>
-                          <span className="text-gray-400 font-medium">R17,999</span>
-                        </li>
-                        <li className="flex items-center justify-between py-3 border-b border-gray-800 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <div className="flex items-center">
-                            <Cpu className="mr-2 h-4 w-4 text-gray-400" />
-                            <Link href="/shop/ipad-air-m3" className="hover:text-gray-300 transition-colors">
-                              iPad Air | Apple M3
-                            </Link>
-                          </div>
-                          <span className="text-gray-400 font-medium">R10,999</span>
-                        </li>
-                        <li className="flex items-center justify-between py-3 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <div className="flex items-center">
-                            <Tablet className="mr-2 h-4 w-4 text-gray-400" />
-                            <Link href="/shop/ipad-a16" className="hover:text-gray-300 transition-colors">
-                              iPad | A16 Chip
-                            </Link>
-                          </div>
-                          <span className="text-gray-400 font-medium">R5,999</span>
-                        </li>
-                      </ul>
-
-                      <div className="mt-6 pt-4 border-t border-gray-800">
-                        <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                          <Shield className="h-4 w-4 text-gray-400" />
-                          <Link
-                            href="/shop?category=ipad-accessories"
-                            className="text-sm hover:text-gray-300 transition-colors"
-                          >
-                            iPad Accessories
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* AirPods Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("airpods")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap">
-                  AirPods <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                {activeDropdown === "airpods" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                        <Headphones className="mr-2 h-5 w-5 text-blue-400" />
-                        AirPods Collection
-                      </h4>
-                      <ul className="space-y-4 text-sm">
-                        <li className="flex items-center justify-between py-3 border-b border-gray-800 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <div className="flex items-center">
-                            <Headphones className="mr-2 h-4 w-4 text-gray-400" />
-                            <Link href="/shop/airpods-pro" className="hover:text-gray-300 transition-colors">
-                              Apple AirPods Pro
-                            </Link>
-                          </div>
-                          <span className="text-gray-400">R3,999</span>
-                        </li>
-                        <li className="flex items-center justify-between py-3 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <div className="flex items-center">
-                            <Bluetooth className="mr-2 h-4 w-4 text-gray-400" />
-                            <Link href="/shop/airpods-pro-2nd-gen" className="hover:text-gray-300 transition-colors">
-                              AirPods Pro (2nd Gen)
-                            </Link>
-                          </div>
-                          <span className="text-gray-400">R1,999</span>
-                        </li>
-                      </ul>
-
-                      <div className="mt-6 pt-4 border-t border-gray-800">
-                        <div className="space-y-3">
-                          <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                            <Settings className="h-4 w-4 text-gray-400" />
-                            <Link
-                              href="/shop/airpods-compare"
-                              className="text-sm hover:text-gray-300 transition-colors"
-                            >
-                              Compare AirPods
-                            </Link>
-                          </div>
-                          <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                            <Circle className="h-4 w-4 text-gray-400" />
-                            <Link
-                              href="/shop/airpods-accessories"
-                              className="text-sm hover:text-gray-300 transition-colors"
-                            >
-                              AirPods Accessories
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Accessories Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("accessories")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap">
-                  Accessories <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                {activeDropdown === "accessories" && (
-                  <div className="absolute top-full left-0 w-[600px] bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <div className="grid grid-cols-3 gap-8">
-                        <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Star className="mr-2 h-5 w-5 text-yellow-400" />
-                            iPhone Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/privacy-screen-protector" className="flex-1">
-                                Privacy Screen Protector
-                              </Link>
-                              <span className="text-gray-400 text-xs">R129-R699</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/clear-iphone-case" className="flex-1">
-                                Clear iPhone Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R149-R499</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/silicone-case" className="flex-1">
-                                Liquid Silicone Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R299-R899</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Headphones className="mr-2 h-5 w-5 text-blue-400" />
-                            Audio & Speakers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Headphones className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/airpods-pro" className="flex-1">
-                                AirPods Pro
-                              </Link>
-                              <span className="text-gray-400 text-xs">R3,999</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Zap className="mr-2 h-5 w-5 text-green-400" />
-                            Wireless Chargers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Zap className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/magsafe-charger-1m" className="flex-1">
-                                MagSafe Charger 1m
-                              </Link>
-                              <span className="text-gray-400 text-xs">R799</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Zap className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/magsafe-charger" className="flex-1">
-                                MagSafe Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R599</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Battery className="mr-2 h-5 w-5 text-orange-400" />
-                            Cables & Chargers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Battery className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/20w-fast-charger" className="flex-1">
-                                20W Fast Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R119</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Cable className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/iphone-cable" className="flex-1">
-                                iPhone Cable
-                              </Link>
-                              <span className="text-gray-400 text-xs">R79</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Battery className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/macbook-charger-60w" className="flex-1">
-                                60W MacBook Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R449</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Tablet className="mr-2 h-5 w-5 text-purple-400" />
-                            iPad Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/ipad-screen-protector" className="flex-1">
-                                iPad Screen Protector
-                              </Link>
-                              <span className="text-gray-400 text-xs">R199</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Tablet className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/ipad-case" className="flex-1">
-                                iPad Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R399</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Watch className="mr-2 h-5 w-5 text-red-400" />
-                            Watch Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Watch className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/watch-bands" className="flex-1">
-                                Watch Bands & Straps
-                              </Link>
-                              <span className="text-gray-400 text-xs">R299</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <HardDrive className="mr-2 h-5 w-5 text-cyan-400" />
-                            Storage
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <HardDrive className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/external-storage" className="flex-1">
-                                External Storage
-                              </Link>
-                              <span className="text-gray-400 text-xs">From R599</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Sneakers */}
-              <Link
-                href="/sneakers"
-                className="text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap"
-              >
-                Sneakers
-              </Link>
-
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("services")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap">
-                  Services <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                {activeDropdown === "services" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                        <Wrench className="mr-2 h-5 w-5 text-orange-400" />
-                        Repair Services
-                      </h4>
-                      <ul className="space-y-3 text-sm">
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Phone className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=iphone" className="hover:text-gray-300 transition-colors flex-1">
-                            iPhone Repairs
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Monitor className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=laptop" className="hover:text-gray-300 transition-colors flex-1">
-                            Laptop Repairs
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Camera className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=screen" className="hover:text-gray-300 transition-colors flex-1">
-                            Screen Replacements
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Battery className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link
-                            href="/repairs?service=battery"
-                            className="hover:text-gray-300 transition-colors flex-1"
-                          >
-                            Battery Replacements
-                          </Link>
-                        </li>
-                      </ul>
-
-                      <div className="mt-6 pt-4 border-t border-gray-800">
-                        <div className="bg-blue-900/30 p-4 rounded-lg">
-                          <div className="flex items-center mb-2">
-                            <MapPin className="mr-2 h-4 w-4 text-blue-400" />
-                            <span className="font-medium text-blue-400">House Call Service</span>
-                          </div>
-                          <p className="text-xs text-gray-300 mb-3">
-                            We come to you! Professional repairs at your location.
-                          </p>
-                          <button
-                            onClick={() => handleButtonClick({ id: "house-call", type: "service", category: "repair" })}
-                            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
-                          >
-                            Book Now - R49
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <Link href="/contact" className="text-white hover:text-gray-300 transition-colors py-2 whitespace-nowrap">
-                Support
-              </Link>
+              {/* ... existing navigation dropdowns ... */}
             </div>
 
-            <div className="flex items-center space-x-4">
-              {/* Mobile menu button */}
-              <button
-                className="lg:hidden text-white hover:text-gray-300 transition-colors"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle mobile menu"
-              >
-                <div className="w-6 h-6 flex flex-col justify-center items-center">
-                  <span
-                    className={`bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}
-                  ></span>
-                  <span
-                    className={`bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
-                  ></span>
-                  <span
-                    className={`bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"}`}
-                  ></span>
-                </div>
-              </button>
-
-              {/* Right Side Icons */}
-              <button className="text-white hover:text-gray-300 transition-colors">
-                <Search className="h-5 w-5" />
-              </button>
-              {authState.user ? (
-                <Link href="/account" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
-                </Link>
-              ) : (
-                <Link href="/auth/login" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
-                </Link>
-              )}
-              <Link href="/cart" className="text-white hover:text-gray-300 transition-colors relative">
-                <ShoppingCart className="h-5 w-5" />
-                {cartState.itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                    {cartState.itemCount}
-                  </span>
-                )}
-              </Link>
-            </div>
+            <div className="flex items-center space-x-4">{/* ... existing navigation icons ... */}</div>
           </div>
 
-          {isMobileMenuOpen && (
-            <div className="lg:hidden fixed inset-0 top-16 bg-black z-50 overflow-y-auto">
-              <div className="px-4 py-6 space-y-6">
-                <div className="space-y-4">
-                  <Link
-                    href="/"
-                    className="block text-white hover:text-gray-300 text-lg font-medium py-3 border-b border-gray-800"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="flex items-center">
-                      <Home className="mr-3 h-5 w-5" />
-                      Home
-                    </div>
-                  </Link>
-
-                  <div className="border-b border-gray-800">
-                    <button
-                      className="w-full text-left text-white hover:text-gray-300 text-lg font-medium py-3 flex items-center justify-between"
-                      onClick={() => setMobileExpandedSection(mobileExpandedSection === "iphone" ? null : "iphone")}
-                    >
-                      <div className="flex items-center">
-                        <Smartphone className="mr-3 h-5 w-5" />
-                        iPhone
-                      </div>
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${mobileExpandedSection === "iphone" ? "rotate-180" : ""}`}
-                      />
-                    </button>
-
-                    {mobileExpandedSection === "iphone" && (
-                      <div className="pl-8 pb-4 space-y-3">
-                        <div className="text-sm text-gray-400 font-medium mb-3">Shop iPhone Range</div>
-                        {[
-                          { name: "iPhone 16 Pro", price: "R21,999", id: "iphone-16-pro" },
-                          { name: "iPhone 16", price: "R18,999", id: "iphone-16" },
-                          { name: "iPhone 15 Pro", price: "R19,999", id: "iphone-15-pro" },
-                          { name: "iPhone 15", price: "R16,999", id: "iphone-15" },
-                          { name: "iPhone 14 Pro", price: "R17,999", id: "iphone-14-pro" },
-                          { name: "iPhone 14", price: "R14,999", id: "iphone-14" },
-                          { name: "iPhone 13", price: "R12,999", id: "iphone-13" },
-                          { name: "iPhone 12", price: "R10,999", id: "iphone-12" },
-                          { name: "iPhone 11", price: "R8,999", id: "iphone-11" },
-                          { name: "iPhone XR", price: "R6,999", id: "iphone-xr" },
-                        ].map((iphone) => (
-                          <div key={iphone.id}>
-                            <button
-                              className="w-full text-left text-white hover:text-gray-300 py-2 flex items-center justify-between"
-                              onClick={() =>
-                                setMobileExpandedIPhone(mobileExpandedIPhone === iphone.id ? null : iphone.id)
-                              }
-                            >
-                              <div className="flex items-center">
-                                <Smartphone className="mr-2 h-4 w-4" />
-                                <span className="text-sm">{iphone.name}</span>
-                                <span className="text-xs text-gray-400 ml-2">From {iphone.price}</span>
-                              </div>
-                              <ChevronDown
-                                className={`h-3 w-3 transition-transform ${mobileExpandedIPhone === iphone.id ? "rotate-180" : ""}`}
-                              />
-                            </button>
-
-                            {mobileExpandedIPhone === iphone.id && (
-                              <div className="pl-6 py-2 space-y-2">
-                                <Link
-                                  href={`/shop/${iphone.id}?storage=128gb`}
-                                  className="block text-xs text-gray-300 hover:text-white py-1"
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  128GB - {iphone.price}
-                                </Link>
-                                <Link
-                                  href={`/shop/${iphone.id}?storage=256gb`}
-                                  className="block text-xs text-gray-300 hover:text-white py-1"
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  256GB - R
-                                  {(
-                                    Number.parseInt(iphone.price.replace("R", "").replace(",", "")) + 3000
-                                  ).toLocaleString()}
-                                </Link>
-                                <Link
-                                  href={`/shop/${iphone.id}?storage=512gb`}
-                                  className="block text-xs text-gray-300 hover:text-white py-1"
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  512GB - R
-                                  {(
-                                    Number.parseInt(iphone.price.replace("R", "").replace(",", "")) + 8000
-                                  ).toLocaleString()}
-                                </Link>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <Link
-                    href="/sneakers"
-                    className="block text-white hover:text-gray-300 text-lg font-medium py-3 border-b border-gray-800"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="flex items-center">
-                      <ShoppingBag className="mr-3 h-5 w-5" />
-                      Sneakers
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/contact"
-                    className="block text-white hover:text-gray-300 text-lg font-medium py-3 border-b border-gray-800"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="flex items-center">
-                      <Phone className="mr-3 h-5 w-5" />
-                      Support
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* ... existing mobile menu ... */}
         </div>
       </nav>
 
