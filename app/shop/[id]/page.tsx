@@ -1004,6 +1004,41 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       inStock: true,
       stockCount: 22,
     },
+    {
+      id: "iphone-13",
+      name: "iPhone 13",
+      brand: "Apple",
+      category: "phone",
+      price: 12999,
+      rating: 4.7,
+      reviews: 892,
+      description: "iPhone 13 with A15 Bionic chip and advanced dual-camera system.",
+      image: "/images/iphone-13-white-blue-gradient.png",
+      colorOptions: [
+        {
+          name: "White",
+          value: "white",
+          images: ["/images/iphone-13-white-blue-gradient.png", "/images/iphone-13-standard-view.png"],
+        },
+        {
+          name: "Starlight",
+          value: "starlight",
+          images: ["/images/iphone-13-camera-closeup.png", "/images/iphone-13-artistic-angles.png"],
+        },
+      ],
+      storageOptions: ["128GB", "256GB", "512GB"],
+      storagePrices: { "128GB": 12999, "256GB": 15999, "512GB": 20999 },
+      specifications: {
+        Display: "6.1-inch Super Retina XDR",
+        Chip: "A15 Bionic",
+        Camera: "Advanced dual-camera system",
+        Battery: "Up to 19 hours video playback",
+        Storage: "128GB, 256GB, 512GB",
+        Connectivity: "5G capable",
+      },
+      inStock: true,
+      stockCount: 25,
+    },
   ]
 
   const product = products.find((p) => String(p.id) === String(params.id))
@@ -1063,149 +1098,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       return selectedColorOption?.images || [product.image]
     }
     return product.images || [product.image]
-  }
-
-  if (String(params.id) === "iphone-13") {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Product Images */}
-            <div className="space-y-4">
-              <div className="aspect-square bg-white rounded-lg overflow-hidden">
-                <img
-                  src={
-                    selectedColor === "White"
-                      ? "/images/iphone-13-white-blue-gradient.png"
-                      : "/images/iphone-13-standard-view.png"
-                  }
-                  alt={`iPhone 13 ${selectedColor}`}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-2">
-                <img
-                  src="/images/iphone-13-white-blue-gradient.png"
-                  alt="iPhone 13 White"
-                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
-                />
-                <img
-                  src="/images/iphone-13-camera-closeup.png"
-                  alt="iPhone 13 Camera Detail"
-                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
-                />
-                <img
-                  src="/images/iphone-13-artistic-angles.png"
-                  alt="iPhone 13 Artistic View"
-                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
-                />
-                <img
-                  src="/images/iphone-13-standard-view.png"
-                  alt="iPhone 13 Standard View"
-                  className="aspect-square bg-white rounded-lg object-contain cursor-pointer hover:ring-2 hover:ring-blue-500"
-                />
-              </div>
-            </div>
-
-            {/* Product Details */}
-            <div className="space-y-6">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">iPhone 13</h1>
-                <p className="text-xl text-gray-600 mt-2">From R12,999</p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900">Color</h3>
-                <div className="flex space-x-3">
-                  {[
-                    {
-                      name: "White",
-                      color: "bg-white border-gray-300",
-                      image: "/images/iphone-13-white-blue-gradient.png",
-                    },
-                    {
-                      name: "Starlight",
-                      color: "bg-gray-100 border-gray-300",
-                      image: "/images/iphone-13-standard-view.png",
-                    },
-                  ].map((color) => (
-                    <button
-                      key={color.name}
-                      onClick={() => setSelectedColor(color.name)}
-                      className={`w-8 h-8 rounded-full border-2 ${color.color} ${
-                        selectedColor === color.name ? "ring-2 ring-blue-500 ring-offset-2" : ""
-                      }`}
-                      title={color.name}
-                    />
-                  ))}
-                </div>
-                <p className="text-sm text-gray-600">{selectedColor}</p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900">Storage</h3>
-                <div className="grid grid-cols-1 gap-3">
-                  {[
-                    { size: "128GB", price: "R12,999" },
-                    { size: "256GB", price: "R15,999" },
-                    { size: "512GB", price: "R20,999" },
-                  ].map((option) => (
-                    <button
-                      key={option.size}
-                      onClick={() => setSelectedStorage(option.size)}
-                      className={`p-4 border rounded-lg text-left transition-colors ${
-                        selectedStorage === option.size
-                          ? "border-blue-500 bg-blue-50"
-                          : "border-gray-300 hover:border-gray-400"
-                      }`}
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">{option.size}</span>
-                        <span className="text-green-600 font-semibold">{option.price}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900">Key Features</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    6.1-inch Super Retina XDR display
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    A15 Bionic chip with 6-core CPU
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    Advanced dual-camera system
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    Up to 19 hours video playback
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    5G capable
-                  </li>
-                </ul>
-              </div>
-
-              <button
-                onClick={handleAddToCart}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Add to Cart -{" "}
-                {selectedStorage === "128GB" ? "R12,999" : selectedStorage === "256GB" ? "R15,999" : "R20,999"}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   if (!product) {
