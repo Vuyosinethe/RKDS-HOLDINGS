@@ -70,8 +70,27 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.9,
       reviews: 312,
       description: "The ultimate iPhone with titanium design, A18 Pro chip, and advanced camera system.",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2013%20%285%29-CkeDd4HHovfnbGmHvfW1R7MQDxJuDl.jpeg",
+      image: "/images/iphone-16-pro-space-black-full.jpeg",
+      colorOptions: [
+        {
+          name: "Space Black",
+          value: "space-black",
+          images: ["/images/iphone-16-pro-space-black-full.jpeg", "/images/iphone-16-pro-space-black-angled.jpeg"],
+        },
+        {
+          name: "Natural Titanium",
+          value: "natural-titanium",
+          images: [
+            "/images/iphone-16-pro-natural-titanium-full.jpeg",
+            "/images/iphone-16-pro-natural-titanium-teal.jpeg",
+          ],
+        },
+        {
+          name: "White Titanium",
+          value: "white-titanium",
+          images: ["/images/iphone-16-pro-white-angled.jpeg"],
+        },
+      ],
       storageOptions: ["128GB", "256GB", "512GB", "1TB"],
       storagePrices: { "128GB": 21999, "256GB": 24999, "512GB": 30999, "1TB": 36999 },
       specifications: {
@@ -139,8 +158,34 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.6,
       reviews: 378,
       description: "iPhone 15 with Dynamic Island and advanced dual-camera system.",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/iPhone%2014%20%284%29-z4Z9WW1fLuwHlfiBv0nvK6TNtikDgv.jpeg",
+      image: "/images/iphone-15-pink-full.jpeg",
+      colorOptions: [
+        {
+          name: "Pink",
+          value: "pink",
+          images: ["/images/iphone-15-pink-full.jpeg"],
+        },
+        {
+          name: "Black",
+          value: "black",
+          images: ["/images/iphone-15-black-full.jpeg"],
+        },
+        {
+          name: "Blue",
+          value: "blue",
+          images: ["/images/iphone-15-blue-full.jpeg"],
+        },
+        {
+          name: "Yellow",
+          value: "yellow",
+          images: ["/images/iphone-15-yellow-full.jpeg"],
+        },
+        {
+          name: "Color Lineup",
+          value: "lineup",
+          images: ["/images/iphone-15-color-lineup.jpeg"],
+        },
+      ],
       storageOptions: ["128GB", "256GB", "512GB"],
       storagePrices: { "128GB": 16999, "256GB": 19999, "512GB": 25999 },
       specifications: {
@@ -793,7 +838,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           setSelectedColor(defaultColor.value)
         }
         if (!currentImage) {
-          setCurrentImage(defaultColor.image)
+          setCurrentImage(defaultColor.images[0])
         }
       } else {
         // Only set default image if currentImage hasn't been set yet
@@ -808,7 +853,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     setSelectedColor(colorValue)
     const selectedColorOption = product.colorOptions?.find((color) => color.value === colorValue)
     if (selectedColorOption) {
-      setCurrentImage(selectedColorOption.image)
+      setCurrentImage(selectedColorOption.images[0])
     }
   }
 
