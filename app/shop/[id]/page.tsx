@@ -330,7 +330,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       stockCount: 25,
     },
     {
-      id: 2,
+      id: "iphone-14",
       name: "iPhone 14",
       brand: "Apple",
       category: "phone",
@@ -338,32 +338,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       rating: 4.5,
       reviews: 67,
       description: "iPhone 14 with advanced dual-camera system and A15 Bionic chip.",
-      image: "/images/iphone-14-midnight-full.jpeg",
+      image: "/images/iphone-14-red-gradient-new.png",
       colorOptions: [
-        {
-          name: "Midnight",
-          value: "midnight",
-          images: ["/images/iphone-14-midnight-full.jpeg", "/images/iphone-14-midnight-gradient.jpeg"],
-        },
-        {
-          name: "Starlight",
-          value: "starlight",
-          images: ["/images/iphone-14-starlight-gradient.jpeg"],
-        },
-        {
-          name: "Purple",
-          value: "purple",
-          images: ["/images/iphone-14-purple-gradient.jpeg"],
-        },
         {
           name: "(PRODUCT)RED",
           value: "red",
-          images: ["/images/iphone-14-red-gradient.jpeg", "/images/iphone-14-red-gradient-new.png"],
-        },
-        {
-          name: "Sierra Blue",
-          value: "sierra-blue",
-          images: ["/images/iphone-14-sierra-blue-colorful.jpeg"],
+          images: ["/images/iphone-14-red-gradient-new.png"],
         },
         {
           name: "White",
@@ -399,7 +379,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       stockCount: 15,
     },
     {
-      id: 21,
+      id: "iphone-15-plus",
       name: "iPhone 15 Plus",
       brand: "Apple",
       category: "phone",
@@ -514,7 +494,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       stockCount: 42,
     },
     {
-      id: 22,
+      id: "iphone-16-plus",
       name: "iPhone 16 Plus",
       brand: "Apple",
       category: "phone",
