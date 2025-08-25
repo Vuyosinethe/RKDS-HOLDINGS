@@ -27,15 +27,6 @@ export default function SneakersPage() {
   const { items } = useCart()
   const router = useRouter()
 
-  const handleBookNow = (sneakerId: string) => {
-    console.log("Booking for sneaker:", sneakerId)
-    router.push(`/shop/${sneakerId}`)
-  }
-
-  const toggleMobileSection = (section: string) => {
-    setExpandedMobile((prev) => (prev === section ? null : section))
-  }
-
   // Sneaker products with image placeholders
   const sneakerProducts = [
     {
@@ -45,79 +36,205 @@ export default function SneakersPage() {
       price: "R2,999",
       rating: 4.8,
       reviews: 124,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/nike-air-max-95-pair-front.jpeg",
     },
     {
-      id: "nike-air-max-270",
-      name: "Nike Air Max 270",
-      colorway: "White/Blue",
-      price: "R2,599",
+      id: "nike-air-max-portal-cream",
+      name: "Nike Air Max Portal",
+      colorway: "Orange/Pink Gradient & Neon Green",
+      price: "R3,299",
       rating: 4.7,
       reviews: 89,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/nike-air-max-portal-orange-pink-side.jpeg",
     },
     {
-      id: "jordan-1-retro-high-chicago",
-      name: "Jordan 1 Retro High",
-      colorway: "Chicago",
-      price: "R4,599",
-      rating: 4.9,
-      reviews: 312,
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      id: "adidas-ultraboost-22",
-      name: "Adidas Ultraboost 22",
-      colorway: "Core Black",
-      price: "R3,299",
+      id: "nike-air-max-portal-original",
+      name: "Nike Air Max Portal",
+      colorway: "Cream/White",
+      price: "R2,999",
       rating: 4.6,
       reviews: 156,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/nike-air-max-portal-original-side.jpeg",
     },
     {
-      id: "nike-dunk-low",
-      name: "Nike Dunk Low",
-      colorway: "Panda",
-      price: "R2,199",
-      rating: 4.5,
-      reviews: 203,
-      image: "/placeholder.svg?height=300&width=300",
+      id: "nike-air-max-portal-black-white",
+      name: "Nike Air Max Portal",
+      colorway: "Black/White",
+      price: "R3,199",
+      rating: 4.8,
+      reviews: 73,
+      image: "/images/nike-air-max-portal-black-white-side.jpeg",
     },
     {
-      id: "converse-chuck-taylor",
-      name: "Converse Chuck Taylor",
-      colorway: "All Star High",
-      price: "R1,599",
-      rating: 4.4,
+      id: "nike-air-max-portal-grey-white",
+      name: "Nike Air Max Portal",
+      colorway: "Grey/White",
+      price: "R3,399",
+      rating: 4.7,
+      reviews: 45,
+      image: "/images/nike-air-max-portal-grey-white-side.jpeg",
+    },
+    {
+      id: "air-jordan-low-white-gray",
+      name: "Air Jordan Low",
+      colorway: "White/Gray",
+      price: "R3,599",
+      rating: 4.9,
+      reviews: 156,
+      image: "/images/air-jordan-low-white-gray.jpeg",
+    },
+    {
+      id: "air-jordan-low-black-orange",
+      name: "Air Jordan Low Orange",
+      colorway: "Black/Orange",
+      price: "R3,799",
+      rating: 4.8,
+      reviews: 92,
+      image: "/images/air-jordan-low-black-orange-side.jpeg",
+    },
+    {
+      id: "air-jordan-low-gray-white",
+      name: "Air Jordan Low",
+      colorway: "Shadow Gray",
+      price: "R3,699",
+      rating: 4.7,
       reviews: 78,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/air-jordan-low-gray-white-side.jpeg",
     },
     {
-      id: "vans-old-skool",
-      name: "Vans Old Skool",
+      id: "nike-shox-tl-silver",
+      name: "Nike Shox TL",
+      colorway: "Metallic Silver/Black",
+      price: "R4,299",
+      rating: 4.6,
+      reviews: 203,
+      image: "/images/nike-shox-tl-side-profile.jpeg",
+    },
+    {
+      id: "nike-air-max-95-big-bubble-black-purple",
+      name: "Nike Air Max 95 'Big Bubble'",
+      colorway: "Black/Purple & Navy/Blue",
+      price: "R4,599",
+      rating: 4.8,
+      reviews: 142,
+      image: "/images/nike-air-max-95-big-bubble-side.jpeg",
+    },
+    {
+      id: "nike-air-max-sndr-purple-gradient",
+      name: "Nike Air Max SNDR",
+      colorway: "Purple Gradient/Black/Silver",
+      price: "R5,299",
+      rating: 4.9,
+      reviews: 67,
+      image: "/images/nike-air-max-sndr-side-profile.jpeg",
+    },
+    {
+      id: "nike-air-max-plus-eclair-lightning",
+      name: "Nike Air Max Plus 'Eclair Lightning'",
+      colorway: "Electric Blue Lightning/Navy/White/Red",
+      price: "R4,799",
+      rating: 4.8,
+      reviews: 94,
+      image: "/images/nike-air-max-plus-eclair-lightning-side.jpeg",
+    },
+    {
+      id: "nike-air-max-plus-drift",
+      name: "Nike Air Max Plus 'Drift'",
+      colorway: "Black/Yellow/Dark Gray",
+      price: "R4,399",
+      rating: 4.7,
+      reviews: 58,
+      image: "/images/nike-air-max-plus-drift-side.jpeg",
+    },
+    {
+      id: "nike-air-max-plus-3",
+      name: "Nike Air Max Plus 3",
+      colorway: "Black/Yellow & White/Light Gray",
+      price: "R4,199",
+      rating: 4.8,
+      reviews: 127,
+      image: "/images/nike-air-max-plus-3-black-side.jpeg",
+    },
+    {
+      id: "nike-air-max-plus-original",
+      name: "Nike Air Max Plus",
+      colorway: "Black/Yellow & White/Silver/Orange",
+      price: "R3,999",
+      rating: 4.9,
+      reviews: 234,
+      image: "/images/nike-air-max-plus-black-side.jpeg",
+    },
+    {
+      id: "nike-air-max-plus",
+      name: "Nike Air Max Plus",
+      colorway: "Black/Yellow",
+      price: "R3,899",
+      rating: 4.8,
+      reviews: 156,
+      image: "/images/nike-air-max-plus-black-sneaker-side-view.png",
+    },
+    {
+      id: "nike-dunk-low-next-nature",
+      name: "Nike Dunk Low Next Nature",
+      colorway: "Pink/White & Grey/White",
+      price: "R2,699",
+      rating: 4.6,
+      reviews: 89,
+      image: "/images/nike-dunk-low-next-nature-pink-side.jpeg",
+    },
+    {
+      id: "new-balance-9060-gray-pink",
+      name: "New Balance 9060",
+      colorway: "Gray/Blue & Pink/Rose",
+      price: "R3,899",
+      rating: 4.7,
+      reviews: 87,
+      image: "/images/new-balance-9060-gray-blue-side.jpeg",
+    },
+    {
+      id: "nike-p-6000-white",
+      name: "Nike P-6000",
+      colorway: "White/Light Gray",
+      price: "R2,799",
+      rating: 4.6,
+      reviews: 92,
+      image: "/images/nike-p-6000-white-silver-side.jpeg",
+    },
+    {
+      id: "converse-chuck-taylor-all-star-black",
+      name: "Converse Chuck Taylor All Star",
       colorway: "Black/White",
       price: "R1,899",
-      rating: 4.3,
-      reviews: 92,
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      id: "new-balance-550",
-      name: "New Balance 550",
-      colorway: "White/Green",
-      price: "R2,799",
-      rating: 4.7,
-      reviews: 67,
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      id: "nike-air-force-1",
-      name: "Nike Air Force 1",
-      colorway: "Triple White",
-      price: "R2,399",
       rating: 4.8,
-      reviews: 445,
-      image: "/placeholder.svg?height=300&width=300",
+      reviews: 267,
+      image: "/images/converse-chuck-taylor-black-side-profile.jpeg",
+    },
+    {
+      id: "air-jordan-4-travis-scott-cactus-jack",
+      name: "Air Jordan 4 Retro 'Travis Scott'",
+      colorway: "University Blue/Black/Varsity Red",
+      price: "R8,999",
+      rating: 4.9,
+      reviews: 89,
+      image: "/images/air-jordan-4-travis-scott-side-profile.jpeg",
+    },
+    {
+      id: "air-jordan-4-black-cat",
+      name: "Air Jordan 4 Retro 'Black Cat'",
+      colorway: "Black/Black/Light Graphite",
+      price: "R7,499",
+      rating: 4.9,
+      reviews: 156,
+      image: "/images/air-jordan-4-black-cat-side-profile.jpeg",
+    },
+    {
+      id: "air-jordan-1-hyper-royal",
+      name: "Air Jordan 1 Retro High 'Hyper Royal'",
+      colorway: "Hyper Royal/Light Smoke Grey/White",
+      price: "R4,999",
+      rating: 4.8,
+      reviews: 134,
+      image: "/images/air-jordan-1-hyper-royal-side-profile.jpeg",
     },
     {
       id: "adidas-stan-smith",
@@ -184,6 +301,19 @@ export default function SneakersPage() {
     },
   ]
 
+  console.log("[v0] Total sneaker products:", sneakerProducts.length)
+  const nikeP6000 = sneakerProducts.find((product) => product.id === "nike-p-6000-white")
+  console.log("[v0] Nike P-6000 product found:", nikeP6000)
+
+  const handleBookNow = (sneakerId: string) => {
+    console.log("Booking for sneaker:", sneakerId)
+    router.push(`/sneakers/${sneakerId}`)
+  }
+
+  const toggleMobileSection = (section: string) => {
+    setExpandedMobile((prev) => (prev === section ? null : section))
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Blue promotional banner */}
@@ -191,7 +321,6 @@ export default function SneakersPage() {
         Free delivery on orders over R500 • Shop now and save!
       </div>
 
-      {/* Navigation */}
       <nav className="bg-black text-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -227,19 +356,7 @@ export default function SneakersPage() {
                             <Phone className="w-4 h-4 mr-2" />
                             Shop iPhone Range
                           </h3>
-                          <div className="space-y-3">
-                            <Link
-                              href="/shop/iphone-16-pro-max"
-                              className="block text-white hover:text-blue-400 transition-colors"
-                            >
-                              <div className="flex items-center justify-between">
-                                <span className="flex items-center">
-                                  <Phone className="w-4 h-4 mr-2" />
-                                  iPhone 16 Pro Max
-                                </span>
-                                <span className="text-sm text-gray-400">From R24,999</span>
-                              </div>
-                            </Link>
+                          <div className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
                             <Link
                               href="/shop/iphone-16-pro"
                               className="block text-white hover:text-blue-400 transition-colors"
@@ -265,15 +382,27 @@ export default function SneakersPage() {
                               </div>
                             </Link>
                             <Link
-                              href="/shop/iphone-15-pro"
+                              href="/shop/iphone-16-plus"
                               className="block text-white hover:text-blue-400 transition-colors"
                             >
                               <div className="flex items-center justify-between">
                                 <span className="flex items-center">
                                   <Phone className="w-4 h-4 mr-2" />
-                                  iPhone 15 Pro
+                                  iPhone 16 Plus
                                 </span>
-                                <span className="text-sm text-gray-400">From R19,999</span>
+                                <span className="text-sm text-gray-400">From R20,999</span>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/shop/iphone-16e"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 16e
+                                </span>
+                                <span className="text-sm text-gray-400">From R16,999</span>
                               </div>
                             </Link>
                             <Link
@@ -289,6 +418,18 @@ export default function SneakersPage() {
                               </div>
                             </Link>
                             <Link
+                              href="/shop/iphone-15-plus"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 15 Plus
+                                </span>
+                                <span className="text-sm text-gray-400">From R18,999</span>
+                              </div>
+                            </Link>
+                            <Link
                               href="/shop/iphone-14-pro"
                               className="block text-white hover:text-blue-400 transition-colors"
                             >
@@ -298,6 +439,18 @@ export default function SneakersPage() {
                                   iPhone 14 Pro
                                 </span>
                                 <span className="text-sm text-gray-400">From R17,999</span>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/shop/iphone-14-pro-max"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 14 Pro Max
+                                </span>
+                                <span className="text-sm text-gray-400">From R20,999</span>
                               </div>
                             </Link>
                             <Link
@@ -685,7 +838,7 @@ export default function SneakersPage() {
                   />
                 </button>
                 {expandedMobile === "iphone" && (
-                  <div className="mt-2 ml-4 space-y-2">
+                  <div className="mt-2 ml-4 space-y-2 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
                     <div className="text-sm text-gray-400 font-medium mb-2">Shop iPhone Range</div>
                     <Link href="/shop/iphone-16-pro" className="block text-gray-300 hover:text-white text-sm">
                       iPhone 16 Pro - From R21,999
@@ -693,14 +846,23 @@ export default function SneakersPage() {
                     <Link href="/shop/iphone-16" className="block text-gray-300 hover:text-white text-sm">
                       iPhone 16 - From R18,999
                     </Link>
-                    <Link href="/shop/iphone-15-pro" className="block text-gray-300 hover:text-white text-sm">
-                      iPhone 15 Pro - From R19,999
+                    <Link href="/shop/iphone-16-plus" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16 Plus - From R20,999
+                    </Link>
+                    <Link href="/shop/iphone-16e" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16e - From R16,999
                     </Link>
                     <Link href="/shop/iphone-15" className="block text-gray-300 hover:text-white text-sm">
                       iPhone 15 - From R16,999
                     </Link>
+                    <Link href="/shop/iphone-15-plus" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 15 Plus - From R18,999
+                    </Link>
                     <Link href="/shop/iphone-14-pro" className="block text-gray-300 hover:text-white text-sm">
                       iPhone 14 Pro - From R17,999
+                    </Link>
+                    <Link href="/shop/iphone-14-pro-max" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 14 Pro Max - From R20,999
                     </Link>
                     <Link href="/shop/iphone-14" className="block text-gray-300 hover:text-white text-sm">
                       iPhone 14 - From R14,999
@@ -865,7 +1027,8 @@ export default function SneakersPage() {
           {sneakerProducts.map((sneaker) => (
             <div
               key={sneaker.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+              onClick={() => handleBookNow(sneaker.id)}
             >
               <div className="aspect-square bg-gray-100 flex items-center justify-center">
                 <img
@@ -874,6 +1037,7 @@ export default function SneakersPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-4">
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">{sneaker.name}</h3>
                 <p className="text-gray-600 text-sm mb-2">{sneaker.colorway}</p>
@@ -893,10 +1057,13 @@ export default function SneakersPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-gray-900">{sneaker.price}</span>
                   <button
-                    onClick={() => handleBookNow(sneaker.id)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleBookNow(sneaker.id)
+                    }}
                     className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
                   >
-                    Book Now
+                    View Details
                   </button>
                 </div>
               </div>

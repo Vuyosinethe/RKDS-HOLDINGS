@@ -1,35 +1,23 @@
 "use client"
 
 import type React from "react"
-import Image from "next/image"
 import { useState } from "react"
 import {
   ShoppingCart,
   Search,
   User,
   ChevronDown,
-  Smartphone,
   Tablet,
   Headphones,
-  Cable,
-  Watch,
-  HardDrive,
-  Star,
   Menu,
   X,
-  Zap,
   Shield,
   Wrench,
-  Battery,
   Cpu,
-  Camera,
-  Monitor,
   Phone,
   Settings,
-  PenToolIcon as Tool,
   MapPin,
-  Bluetooth,
-  Circle,
+  Laptop,
 } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/lib/cart-context"
@@ -41,6 +29,7 @@ export default function ContactPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { items } = useCart()
   const authState = useAuth()
+  const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
 
   const itemCount = items ? items.reduce((sum, item) => sum + item.quantity, 0) : 0
 
@@ -75,22 +64,19 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Main Navigation */}
-      <nav className="bg-black text-white sticky top-0 z-50 overflow-visible">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
-          <div className="flex justify-between items-center h-16">
+      <nav className="bg-black text-white sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center">
-              <Image src="/images/rkds-logo.png" alt="RKDS Holdings" width={120} height={40} className="h-8 w-auto" />
+            <div className="flex-shrink-0">
+              <Link href="/" className="text-xl font-bold">
+                RKDS
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-4 md:space-x-6 lg:space-x-8 relative overflow-visible">
-              {/* Home Link */}
-              <Link
-                href="/"
-                className="text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base"
-              >
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-white hover:text-gray-300 font-medium transition-colors">
                 Home
               </Link>
 
@@ -100,528 +86,193 @@ export default function ContactPage() {
                 onMouseEnter={() => setActiveDropdown("iphone")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base">
-                  iPhone <ChevronDown className="ml-1 h-4 w-4" />
+                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors">
+                  iPhone <ChevronDown className="ml-1 h-4 w-4 text-white" />
                 </button>
+
                 {activeDropdown === "iphone" && (
-                  <div className="absolute top-full left-0 w-[600px] bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <div className="grid grid-cols-2 gap-8">
+                  <div className="absolute top-full left-0 mt-0 w-96 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
+                    <div className="p-6">
+                      <div className="grid grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Smartphone className="mr-2 h-5 w-5 text-blue-400" />
+                          <h3 className="text-blue-400 font-semibold mb-4 flex items-center">
+                            <Phone className="w-4 h-4 mr-2" />
                             Shop iPhone Range
-                          </h4>
-                          <ul className="space-y-2 text-sm">
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() =>
-                                  setExpandedIPhone(expandedIPhone === "iphone-16-pro" ? null : "iphone-16-pro")
-                                }
-                              >
-                                <Cpu className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 16 Pro</span>
-                                <span className="text-gray-400 text-xs mr-2">From R21,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-16-pro" ? "rotate-180" : ""}`}
-                                />
+                          </h3>
+                          <div className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
+                            <Link
+                              href="/shop/iphone-16-pro"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 16 Pro
+                                </span>
+                                <span className="text-sm text-gray-400">From R21,999</span>
                               </div>
-                              {expandedIPhone === "iphone-16-pro" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-16-pro?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R21,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-16-pro?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R24,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-16-pro?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R29,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-16" ? null : "iphone-16")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 16</span>
-                                <span className="text-gray-400 text-xs mr-2">From R18,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-16" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-16"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 16
+                                </span>
+                                <span className="text-sm text-gray-400">From R18,999</span>
                               </div>
-                              {expandedIPhone === "iphone-16" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-16?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R18,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-16?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R21,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-16?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R26,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() =>
-                                  setExpandedIPhone(expandedIPhone === "iphone-15-pro" ? null : "iphone-15-pro")
-                                }
-                              >
-                                <Cpu className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 15 Pro</span>
-                                <span className="text-gray-400 text-xs mr-2">From R19,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-15-pro" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-16-plus"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 16 Plus
+                                </span>
+                                <span className="text-sm text-gray-400">From R20,999</span>
                               </div>
-                              {expandedIPhone === "iphone-15-pro" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-15-pro?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R19,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-15-pro?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R22,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-15-pro?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R27,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-15" ? null : "iphone-15")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 15</span>
-                                <span className="text-gray-400 text-xs mr-2">From R16,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-15" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-16e"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 16e
+                                </span>
+                                <span className="text-sm text-gray-400">From R16,999</span>
                               </div>
-                              {expandedIPhone === "iphone-15" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-15?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R16,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-15?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R19,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-15?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R24,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() =>
-                                  setExpandedIPhone(expandedIPhone === "iphone-14-pro" ? null : "iphone-14-pro")
-                                }
-                              >
-                                <Cpu className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 14 Pro</span>
-                                <span className="text-gray-400 text-xs mr-2">From R17,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-14-pro" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-15"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 15
+                                </span>
+                                <span className="text-sm text-gray-400">From R16,999</span>
                               </div>
-                              {expandedIPhone === "iphone-14-pro" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-14-pro?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R17,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-14-pro?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R20,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-14-pro?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R25,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-14" ? null : "iphone-14")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 14</span>
-                                <span className="text-gray-400 text-xs mr-2">From R14,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-14" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-15-plus"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 15 Plus
+                                </span>
+                                <span className="text-sm text-gray-400">From R18,999</span>
                               </div>
-                              {expandedIPhone === "iphone-14" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-14?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R14,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-14?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R17,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-14?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R22,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-13" ? null : "iphone-13")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 13</span>
-                                <span className="text-gray-400 text-xs mr-2">From R12,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-13" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-14-pro"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 14 Pro
+                                </span>
+                                <span className="text-sm text-gray-400">From R17,999</span>
                               </div>
-                              {expandedIPhone === "iphone-13" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-13?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R12,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-13?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R15,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-13?storage=512gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">512GB</span>
-                                      <span className="text-green-400 font-medium">R20,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-12" ? null : "iphone-12")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 12</span>
-                                <span className="text-gray-400 text-xs mr-2">From R10,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-12" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-14-pro-max"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 14 Pro Max
+                                </span>
+                                <span className="text-sm text-gray-400">From R20,999</span>
                               </div>
-                              {expandedIPhone === "iphone-12" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-12?storage=64gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">64GB</span>
-                                      <span className="text-green-400 font-medium">R10,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-12?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R13,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-12?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R18,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-11" ? null : "iphone-11")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone 11</span>
-                                <span className="text-gray-400 text-xs mr-2">From R8,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-11" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-14"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 14
+                                </span>
+                                <span className="text-sm text-gray-400">From R14,999</span>
                               </div>
-                              {expandedIPhone === "iphone-11" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-11?storage=64gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">64GB</span>
-                                      <span className="text-green-400 font-medium">R8,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-11?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R11,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-11?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R16,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-
-                            <li className="group">
-                              <div
-                                className="flex items-center py-2 hover:text-gray-300 transition-colors cursor-pointer hover:bg-gray-800 rounded px-2"
-                                onClick={() => setExpandedIPhone(expandedIPhone === "iphone-xr" ? null : "iphone-xr")}
-                              >
-                                <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                                <span className="flex-1 font-medium">iPhone XR</span>
-                                <span className="text-gray-400 text-xs mr-2">From R6,999</span>
-                                <ChevronDown
-                                  className={`h-3 w-3 transition-transform ${expandedIPhone === "iphone-xr" ? "rotate-180" : ""}`}
-                                />
+                            </Link>
+                            <Link
+                              href="/shop/iphone-13"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 13
+                                </span>
+                                <span className="text-sm text-gray-400">From R12,999</span>
                               </div>
-                              {expandedIPhone === "iphone-xr" && (
-                                <div className="ml-6 mt-2 space-y-2 bg-gray-900 rounded p-3">
-                                  <div className="text-xs text-gray-400 mb-2">Choose Storage:</div>
-                                  <Link
-                                    href="/shop/iphone-xr?storage=64gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">64GB</span>
-                                      <span className="text-green-400 font-medium">R6,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-xr?storage=128gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">128GB</span>
-                                      <span className="text-green-400 font-medium">R8,999</span>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/shop/iphone-xr?storage=256gb"
-                                    className="block hover:bg-gray-800 p-2 rounded transition-colors"
-                                  >
-                                    <div className="flex justify-between items-center">
-                                      <span className="text-white">256GB</span>
-                                      <span className="text-green-400 font-medium">R11,999</span>
-                                    </div>
-                                  </Link>
-                                </div>
-                              )}
-                            </li>
-                          </ul>
+                            </Link>
+                            <Link
+                              href="/shop/iphone-12"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 12
+                                </span>
+                                <span className="text-sm text-gray-400">From R10,999</span>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/shop/iphone-11"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone 11
+                                </span>
+                                <span className="text-sm text-gray-400">From R8,999</span>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/shop/iphone-xr"
+                              className="block text-white hover:text-blue-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2" />
+                                  iPhone XR
+                                </span>
+                                <span className="text-sm text-gray-400">From R6,999</span>
+                              </div>
+                            </Link>
+                          </div>
                         </div>
                         <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Search className="mr-2 h-5 w-5 text-green-400" />
+                          <h3 className="text-green-400 font-semibold mb-4 flex items-center">
+                            <Search className="w-4 h-4 mr-2" />
                             Explore iPhone
-                          </h4>
-                          <div className="space-y-4">
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Search className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/shop?category=iphones"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  Explore iPhone
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Explore the world of iPhone.</p>
+                          </h3>
+                          <div className="space-y-3">
+                            <Link
+                              href="/shop/compare"
+                              className="block text-white hover:text-green-400 transition-colors"
+                            >
+                              <div className="flex items-center">
+                                <Settings className="w-4 h-4 mr-2" />
+                                Compare iPhone
                               </div>
-                            </div>
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Settings className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/shop/compare"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  Compare iPhone
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Find the perfect iPhone for your needs.</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-800 transition-colors">
-                              <Tool className="h-5 w-5 mt-1 text-gray-400" />
-                              <div>
-                                <Link
-                                  href="/repairs?service=iphone"
-                                  className="hover:text-gray-300 transition-colors font-medium block"
-                                >
-                                  iPhone Repairs
-                                </Link>
-                                <p className="text-gray-400 text-xs mt-1">Professional repair services.</p>
-                              </div>
-                            </div>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -636,54 +287,49 @@ export default function ContactPage() {
                 onMouseEnter={() => setActiveDropdown("ipad")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base">
-                  iPad <ChevronDown className="ml-1 h-4 w-4" />
+                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors">
+                  iPad <ChevronDown className="ml-1 h-4 w-4 text-white" />
                 </button>
+
                 {activeDropdown === "ipad" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
+                  <div className="absolute top-full left-0 mt-0 w-80 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
                     <div className="p-6">
-                      <h3 className="text-lg font-semibold mb-4 flex items-center">
-                        <Tablet className="mr-2 h-5 w-5" />
+                      <h3 className="text-blue-400 font-semibold mb-4 flex items-center">
+                        <Tablet className="w-4 h-4 mr-2" />
                         Shop iPad Range
                       </h3>
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         <Link
                           href="/shop/ipad-pro-m4"
-                          className="flex items-center justify-between hover:text-gray-300 transition-colors"
+                          className="block text-white hover:text-blue-400 transition-colors"
                         >
-                          <div className="flex items-center">
-                            <Tablet className="mr-3 h-4 w-4" />
-                            <span className="font-medium">iPad Pro | Apple M4</span>
+                          <div className="flex items-center justify-between">
+                            <span className="flex items-center">
+                              <Cpu className="w-4 h-4 mr-2" />
+                              iPad Pro | Apple M4
+                            </span>
+                            <span className="text-sm text-gray-400">R17,999</span>
                           </div>
-                          <span className="text-sm">R17,999</span>
                         </Link>
                         <Link
                           href="/shop/ipad-air-m3"
-                          className="flex items-center justify-between hover:text-gray-300 transition-colors"
+                          className="block text-white hover:text-blue-400 transition-colors"
                         >
-                          <div className="flex items-center">
-                            <Tablet className="mr-3 h-4 w-4" />
-                            <span className="font-medium">iPad Air | Apple M3</span>
+                          <div className="flex items-center justify-between">
+                            <span className="flex items-center">
+                              <Cpu className="w-4 h-4 mr-2" />
+                              iPad Air | Apple M3
+                            </span>
+                            <span className="text-sm text-gray-400">R10,999</span>
                           </div>
-                          <span className="text-sm">R10,999</span>
                         </Link>
-                        <Link
-                          href="/shop/ipad-a16"
-                          className="flex items-center justify-between hover:text-gray-300 transition-colors"
-                        >
-                          <div className="flex items-center">
-                            <Tablet className="mr-3 h-4 w-4" />
-                            <span className="font-medium">iPad | A16 Chip</span>
-                          </div>
-                          <span className="text-sm">R5,999</span>
-                        </Link>
-                        <Link
-                          href="/shop?category=accessories&filter=ipad"
-                          className="flex items-center hover:text-gray-300 transition-colors"
-                        >
-                          <div className="flex items-center">
-                            <div className="mr-3 h-4 w-4 rounded-full border border-white"></div>
-                            <span className="font-medium">iPad Accessories</span>
+                        <Link href="/shop/ipad-a16" className="block text-white hover:text-blue-400 transition-colors">
+                          <div className="flex items-center justify-between">
+                            <span className="flex items-center">
+                              <Cpu className="w-4 h-4 mr-2" />
+                              iPad | A16 Chip
+                            </span>
+                            <span className="text-sm text-gray-400">R5,999</span>
                           </div>
                         </Link>
                       </div>
@@ -698,50 +344,41 @@ export default function ContactPage() {
                 onMouseEnter={() => setActiveDropdown("airpods")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base">
-                  AirPods <ChevronDown className="ml-1 h-4 w-4" />
+                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors">
+                  AirPods <ChevronDown className="ml-1 h-4 w-4 text-white" />
                 </button>
+
                 {activeDropdown === "airpods" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
+                  <div className="absolute top-full left-0 mt-0 w-80 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
                     <div className="p-6">
-                      <h3 className="text-lg font-semibold mb-4 flex items-center">
-                        <Headphones className="mr-2 h-5 w-5" />
+                      <h3 className="text-blue-400 font-semibold mb-4 flex items-center">
+                        <Headphones className="w-4 h-4 mr-2" />
                         AirPods Collection
                       </h3>
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         <Link
                           href="/shop/airpods-pro"
-                          className="flex items-center justify-between hover:text-gray-300 transition-colors py-2 border-b border-gray-700"
+                          className="block text-white hover:text-blue-400 transition-colors"
                         >
-                          <div className="flex items-center">
-                            <Headphones className="mr-3 h-4 w-4" />
-                            <span className="font-medium">Apple AirPods Pro</span>
+                          <div className="flex items-center justify-between">
+                            <span className="flex items-center">
+                              <Headphones className="w-4 h-4 mr-2" />
+                              Apple AirPods Pro
+                            </span>
+                            <span className="text-sm text-gray-400">R3,999</span>
                           </div>
-                          <span className="text-sm">R3,999</span>
                         </Link>
                         <Link
                           href="/shop/airpods-pro-2nd-gen"
-                          className="flex items-center justify-between hover:text-gray-300 transition-colors py-2 border-b border-gray-700"
+                          className="block text-white hover:text-blue-400 transition-colors"
                         >
-                          <div className="flex items-center">
-                            <Bluetooth className="mr-3 h-4 w-4" />
-                            <span className="font-medium">AirPods Pro (2nd Gen)</span>
+                          <div className="flex items-center justify-between">
+                            <span className="flex items-center">
+                              <Headphones className="w-4 h-4 mr-2" />
+                              AirPods Pro (2nd Gen)
+                            </span>
+                            <span className="text-sm text-gray-400">R1,999</span>
                           </div>
-                          <span className="text-sm">R1,999</span>
-                        </Link>
-                        <Link
-                          href="/shop?category=airpods&compare=true"
-                          className="flex items-center hover:text-gray-300 transition-colors py-2 border-b border-gray-700"
-                        >
-                          <Settings className="mr-3 h-4 w-4" />
-                          <span className="font-medium">Compare AirPods</span>
-                        </Link>
-                        <Link
-                          href="/shop?category=airpods-accessories"
-                          className="flex items-center hover:text-gray-300 transition-colors py-2"
-                        >
-                          <Circle className="mr-3 h-4 w-4" />
-                          <span className="font-medium">AirPods Accessories</span>
                         </Link>
                       </div>
                     </div>
@@ -755,160 +392,65 @@ export default function ContactPage() {
                 onMouseEnter={() => setActiveDropdown("accessories")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base">
-                  Accessories <ChevronDown className="ml-1 h-4 w-4" />
+                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors">
+                  Accessories <ChevronDown className="ml-1 h-4 w-4 text-white" />
                 </button>
+
                 {activeDropdown === "accessories" && (
-                  <div className="absolute top-full left-0 w-[600px] bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <div className="grid grid-cols-3 gap-8">
-                        {/* Column 1 */}
+                  <div className="absolute top-full left-0 mt-0 w-96 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
+                    <div className="p-6">
+                      <div className="grid grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Star className="mr-2 h-5 w-5 text-yellow-400" />
+                          <h3 className="text-yellow-400 font-semibold mb-4 flex items-center">
+                            <Phone className="w-4 h-4 mr-2" />
                             iPhone Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/privacy-screen-protector" className="flex-1">
-                                Privacy Screen Protector
-                              </Link>
-                              <span className="text-gray-400 text-xs">R129-R699</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Smartphone className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/clear-iphone-case" className="flex-1">
-                                Clear iPhone Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R149-R499</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/silicone-case" className="flex-1">
-                                Liquid Silicone Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R299-R899</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Headphones className="mr-2 h-5 w-5 text-blue-400" />
-                            Audio & Speakers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Headphones className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/airpods-pro" className="flex-1">
-                                AirPods Pro
-                              </Link>
-                              <span className="text-gray-400 text-xs">R3,999</span>
-                            </li>
-                          </ul>
+                          </h3>
+                          <div className="space-y-3">
+                            <Link
+                              href="/shop/iphone-case"
+                              className="block text-white hover:text-yellow-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Shield className="w-4 h-4 mr-2" />
+                                  Clear iPhone Case
+                                </span>
+                                <span className="text-sm text-gray-400">R149-R499</span>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/shop/screen-protector"
+                              className="block text-white hover:text-yellow-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Shield className="w-4 h-4 mr-2" />
+                                  Privacy Screen Protector
+                                </span>
+                                <span className="text-sm text-gray-400">R129-R699</span>
+                              </div>
+                            </Link>
+                          </div>
                         </div>
-
-                        {/* Column 2 */}
                         <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Zap className="mr-2 h-5 w-5 text-green-400" />
-                            Wireless Chargers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Zap className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/magsafe-charger-1m" className="flex-1">
-                                MagSafe Charger 1m
-                              </Link>
-                              <span className="text-gray-400 text-xs">R799</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Zap className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/magsafe-charger" className="flex-1">
-                                MagSafe Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R599</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Battery className="mr-2 h-5 w-5 text-orange-400" />
-                            Cables & Chargers
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Battery className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/20w-fast-charger" className="flex-1">
-                                20W Fast Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R119</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Cable className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/iphone-cable" className="flex-1">
-                                iPhone Cable
-                              </Link>
-                              <span className="text-gray-400 text-xs">R79</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Battery className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/macbook-charger-60w" className="flex-1">
-                                60W MacBook Charger
-                              </Link>
-                              <span className="text-gray-400 text-xs">R449</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* Column 3 */}
-                        <div>
-                          <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                            <Tablet className="mr-2 h-5 w-5 text-purple-400" />
+                          <h3 className="text-green-400 font-semibold mb-4 flex items-center">
+                            <Tablet className="w-4 h-4 mr-2" />
                             iPad Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Shield className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/ipad-screen-protector" className="flex-1">
-                                iPad Screen Protector
-                              </Link>
-                              <span className="text-gray-400 text-xs">R199</span>
-                            </li>
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Tablet className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/ipad-case" className="flex-1">
-                                iPad Case
-                              </Link>
-                              <span className="text-gray-400 text-xs">R399</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <Watch className="mr-2 h-5 w-5 text-red-400" />
-                            Watch Accessories
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <Watch className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/watch-bands" className="flex-1">
-                                Watch Bands & Straps
-                              </Link>
-                              <span className="text-gray-400 text-xs">R299</span>
-                            </li>
-                          </ul>
-
-                          <h4 className="font-bold mb-4 mt-6 text-white text-lg flex items-center">
-                            <HardDrive className="mr-2 h-5 w-5 text-cyan-400" />
-                            Storage
-                          </h4>
-                          <ul className="space-y-3 text-sm">
-                            <li className="flex items-center py-1 hover:text-gray-300 transition-colors">
-                              <HardDrive className="mr-2 h-4 w-4 text-gray-400" />
-                              <Link href="/shop/external-storage" className="flex-1">
-                                External Storage
-                              </Link>
-                              <span className="text-gray-400 text-xs">From R599</span>
-                            </li>
-                          </ul>
+                          </h3>
+                          <div className="space-y-3">
+                            <Link
+                              href="/shop/ipad-case"
+                              className="block text-white hover:text-green-400 transition-colors"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="flex items-center">
+                                  <Shield className="w-4 h-4 mr-2" />
+                                  iPad Case
+                                </span>
+                                <span className="text-sm text-gray-400">R399</span>
+                              </div>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -916,11 +458,7 @@ export default function ContactPage() {
                 )}
               </div>
 
-              {/* Sneakers */}
-              <Link
-                href="/sneakers"
-                className="text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base"
-              >
+              <Link href="/sneakers" className="text-white hover:text-gray-300 font-medium transition-colors">
                 Sneakers
               </Link>
 
@@ -930,58 +468,50 @@ export default function ContactPage() {
                 onMouseEnter={() => setActiveDropdown("services")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors py-2 whitespace-nowrap text-sm md:text-base">
-                  Services <ChevronDown className="ml-1 h-4 w-4" />
+                <button className="flex items-center text-white hover:text-gray-300 font-medium transition-colors">
+                  Services <ChevronDown className="ml-1 h-4 w-4 text-white" />
                 </button>
-                {activeDropdown === "services" && (
-                  <div className="absolute top-full left-0 w-80 bg-black text-white shadow-2xl border border-gray-700 z-[100] transition-all duration-200">
-                    <div className="p-8 pt-6">
-                      <h4 className="font-bold mb-4 text-white text-lg flex items-center">
-                        <Wrench className="mr-2 h-5 w-5 text-orange-400" />
-                        Repair Services
-                      </h4>
-                      <ul className="space-y-3 text-sm">
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Phone className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=iphone" className="hover:text-gray-300 transition-colors flex-1">
-                            iPhone Repairs
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Monitor className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=laptop" className="hover:text-gray-300 transition-colors flex-1">
-                            Laptop Repairs
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Camera className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link href="/repairs?service=screen" className="hover:text-gray-300 transition-colors flex-1">
-                            Screen Replacements
-                          </Link>
-                        </li>
-                        <li className="flex items-center py-2 hover:bg-gray-800 px-3 rounded transition-colors">
-                          <Battery className="mr-3 h-4 w-4 text-gray-400" />
-                          <Link
-                            href="/repairs?service=battery"
-                            className="hover:text-gray-300 transition-colors flex-1"
-                          >
-                            Battery Replacements
-                          </Link>
-                        </li>
-                      </ul>
 
-                      <div className="mt-6 pt-4 border-t border-gray-800">
-                        <div className="bg-blue-900/30 p-4 rounded-lg">
-                          <div className="flex items-center mb-2">
-                            <MapPin className="mr-2 h-4 w-4 text-blue-400" />
-                            <span className="font-medium text-blue-400">House Call Service</span>
+                {activeDropdown === "services" && (
+                  <div className="absolute top-full left-0 mt-0 w-80 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
+                    <div className="p-6">
+                      <h3 className="text-orange-400 font-semibold mb-4 flex items-center">
+                        <Wrench className="w-4 h-4 mr-2" />
+                        Repair Services
+                      </h3>
+                      <div className="space-y-3">
+                        <Link href="/repairs" className="block text-white hover:text-orange-400 transition-colors">
+                          <div className="flex items-center">
+                            <Phone className="w-4 h-4 mr-2" />
+                            iPhone Repairs
                           </div>
-                          <p className="text-xs text-gray-300 mb-3">
+                        </Link>
+                        <Link href="/repairs" className="block text-white hover:text-orange-400 transition-colors">
+                          <div className="flex items-center">
+                            <Laptop className="w-4 h-4 mr-2" />
+                            Laptop Repairs
+                          </div>
+                        </Link>
+                        <Link href="/repairs" className="block text-white hover:text-orange-400 transition-colors">
+                          <div className="flex items-center">
+                            <Wrench className="w-4 h-4 mr-2" />
+                            Screen Replacements
+                          </div>
+                        </Link>
+                        <Link href="/repairs" className="block text-white hover:text-orange-400 transition-colors">
+                          <div className="flex items-center">
+                            <Wrench className="w-4 h-4 mr-2" />
+                            Battery Replacements
+                          </div>
+                        </Link>
+                        <div className="bg-blue-600 rounded-lg p-3 mt-3">
+                          <div className="text-blue-100 text-sm font-medium mb-1">House Call Service</div>
+                          <div className="text-blue-200 text-xs mb-2">
                             We come to you! Professional repairs at your location.
-                          </p>
+                          </div>
                           <Link
-                            href="/repairs?service=house-call"
-                            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
+                            href="/repairs"
+                            className="bg-blue-500 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-400"
                           >
                             Book Now - R49
                           </Link>
@@ -992,108 +522,228 @@ export default function ContactPage() {
                 )}
               </div>
 
-              <Link
-                href="/contact"
-                className="text-white hover:text-gray-300 transition-colors py-2 whitespace-nowrap text-sm md:text-base"
-              >
+              <Link href="/contact" className="text-white hover:text-gray-300 font-medium transition-colors">
                 Support
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden flex items-center space-x-4">
-              <button className="text-white hover:text-gray-300 transition-colors">
-                <Search className="h-5 w-5" />
-              </button>
+            {/* Right side icons */}
+            <div className="flex items-center space-x-4">
+              <Search className="h-5 w-5 text-white cursor-pointer hover:text-gray-300" />
               {authState.user ? (
-                <Link href="/account" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
+                <Link href="/account">
+                  <User className="h-5 w-5 text-white cursor-pointer hover:text-gray-300" />
                 </Link>
               ) : (
-                <Link href="/auth/login" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
+                <Link href="/auth/login">
+                  <User className="h-5 w-5 text-white cursor-pointer hover:text-gray-300" />
                 </Link>
               )}
-              <Link href="/cart" className="text-white hover:text-gray-300 transition-colors relative">
-                <ShoppingCart className="h-5 w-5" />
+              <Link href="/cart" className="relative">
+                <ShoppingCart className="h-5 w-5 text-white cursor-pointer hover:text-gray-300" />
                 {itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {itemCount}
                   </span>
                 )}
               </Link>
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white hover:text-gray-300 transition-colors"
-              >
+
+              {/* Mobile menu button */}
+              <button className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
-            </div>
-
-            {/* Right Side Icons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <button className="text-white hover:text-gray-300 transition-colors">
-                <Search className="h-5 w-5" />
-              </button>
-              {authState.user ? (
-                <Link href="/account" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
-                </Link>
-              ) : (
-                <Link href="/auth/login" className="text-white hover:text-gray-300 transition-colors">
-                  <User className="h-5 w-5" />
-                </Link>
-              )}
-              <Link href="/cart" className="text-white hover:text-gray-300 transition-colors relative">
-                <ShoppingCart className="h-5 w-5" />
-                {itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                    {itemCount}
-                  </span>
-                )}
-              </Link>
             </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-black border-t border-gray-700">
-            <div className="px-4 py-6 space-y-4">
-              <Link href="/" className="flex items-center text-white hover:text-gray-300 py-2">
-                <span className="text-lg font-medium">Home</span>
-              </Link>
-              <Link href="/shop?category=iphone" className="flex items-center text-white hover:text-gray-300 py-2">
-                <Smartphone className="mr-3 h-5 w-5" />
-                <span className="text-lg font-medium">iPhone</span>
-              </Link>
-              <Link href="/shop?category=ipad" className="flex items-center text-white hover:text-gray-300 py-2">
-                <Tablet className="mr-3 h-5 w-5" />
-                <span className="text-lg font-medium">iPad</span>
-              </Link>
-              <Link href="/shop?category=airpods" className="flex items-center text-white hover:text-gray-300 py-2">
-                <Headphones className="mr-3 h-5 w-5" />
-                <span className="text-lg font-medium">AirPods</span>
-              </Link>
-              <Link href="/shop?category=accessories" className="flex items-center text-white hover:text-gray-300 py-2">
-                <Cable className="mr-3 h-5 w-5" />
-                <span className="text-lg font-medium">Accessories</span>
-              </Link>
-              <Link href="/sneakers" className="flex items-center text-white hover:text-gray-300 py-2">
-                <span className="text-lg font-medium">Sneakers</span>
-              </Link>
-              <Link href="/repairs" className="flex items-center text-white hover:text-gray-300 py-2">
-                <span className="text-lg font-medium">Services</span>
-              </Link>
-              <Link href="/contact" className="flex items-center text-white hover:text-gray-300 py-2">
-                <span className="text-lg font-medium">Support</span>
+          <div className="md:hidden bg-black border-t border-gray-800">
+            <div className="px-4 py-4 space-y-4">
+              <Link href="/" className="block text-white hover:text-gray-300 font-medium">
+                Home
               </Link>
 
-              {/* House Call Service Highlight */}
-              <div className="mt-6 p-4 bg-blue-600 rounded-lg">
-                <div className="text-white font-semibold">House Call Service</div>
-                <div className="text-blue-100 text-sm">Only R49 - We come to you!</div>
+              <div>
+                <button
+                  onClick={() => setExpandedMobile(expandedMobile === "iphone" ? null : "iphone")}
+                  className="flex items-center justify-between w-full text-white hover:text-gray-300 font-medium"
+                >
+                  iPhone
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${expandedMobile === "iphone" ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {expandedMobile === "iphone" && (
+                  <div className="mt-2 ml-4 space-y-2 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
+                    <div className="text-sm text-gray-400 font-medium mb-2">Shop iPhone Range</div>
+                    <Link href="/shop/iphone-16-pro" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16 Pro - From R21,999
+                    </Link>
+                    <Link href="/shop/iphone-16" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16 - From R18,999
+                    </Link>
+                    <Link href="/shop/iphone-16-plus" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16 Plus - From R20,999
+                    </Link>
+                    <Link href="/shop/iphone-16e" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 16e - From R16,999
+                    </Link>
+                    <Link href="/shop/iphone-15" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 15 - From R16,999
+                    </Link>
+                    <Link href="/shop/iphone-15-plus" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 15 Plus - From R18,999
+                    </Link>
+                    <Link href="/shop/iphone-14-pro" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 14 Pro - From R17,999
+                    </Link>
+                    <Link href="/shop/iphone-14-pro-max" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 14 Pro Max - From R20,999
+                    </Link>
+                    <Link href="/shop/iphone-14" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 14 - From R14,999
+                    </Link>
+                    <Link href="/shop/iphone-13" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 13 - From R12,999
+                    </Link>
+                    <Link href="/shop/iphone-12" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 12 - From R10,999
+                    </Link>
+                    <Link href="/shop/iphone-11" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone 11 - From R8,999
+                    </Link>
+                    <Link href="/shop/iphone-xr" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone XR - From R6,999
+                    </Link>
+                  </div>
+                )}
               </div>
+
+              <div>
+                <button
+                  onClick={() => setExpandedMobile(expandedMobile === "ipad" ? null : "ipad")}
+                  className="flex items-center justify-between w-full text-white hover:text-gray-300 font-medium"
+                >
+                  iPad
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${expandedMobile === "ipad" ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {expandedMobile === "ipad" && (
+                  <div className="mt-2 ml-4 space-y-2">
+                    <div className="text-sm text-gray-400 font-medium mb-2">Shop iPad Range</div>
+                    <Link href="/shop/ipad-pro-m4" className="block text-gray-300 hover:text-white text-sm">
+                      iPad Pro | Apple M4 - R17,999
+                    </Link>
+                    <Link href="/shop/ipad-air-m3" className="block text-gray-300 hover:text-white text-sm">
+                      iPad Air | Apple M3 - R10,999
+                    </Link>
+                    <Link href="/shop/ipad-a16" className="block text-gray-300 hover:text-white text-sm">
+                      iPad | A16 Chip - R5,999
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <button
+                  onClick={() => setExpandedMobile(expandedMobile === "airpods" ? null : "airpods")}
+                  className="flex items-center justify-between w-full text-white hover:text-gray-300 font-medium"
+                >
+                  AirPods
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${expandedMobile === "airpods" ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {expandedMobile === "airpods" && (
+                  <div className="mt-2 ml-4 space-y-2">
+                    <div className="text-sm text-gray-400 font-medium mb-2">AirPods Collection</div>
+                    <Link href="/shop/airpods-pro" className="block text-gray-300 hover:text-white text-sm">
+                      Apple AirPods Pro - R3,999
+                    </Link>
+                    <Link href="/shop/airpods-pro-2nd-gen" className="block text-gray-300 hover:text-white text-sm">
+                      AirPods Pro (2nd Gen) - R1,999
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <button
+                  onClick={() => setExpandedMobile(expandedMobile === "accessories" ? null : "accessories")}
+                  className="flex items-center justify-between w-full text-white hover:text-gray-300 font-medium"
+                >
+                  Accessories
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${expandedMobile === "accessories" ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {expandedMobile === "accessories" && (
+                  <div className="mt-2 ml-4 space-y-2">
+                    <div className="text-sm text-gray-400 font-medium mb-2">iPhone Accessories</div>
+                    <Link href="/shop/iphone-case" className="block text-gray-300 hover:text-white text-sm">
+                      Clear iPhone Case - R149-R499
+                    </Link>
+                    <Link href="/shop/screen-protector" className="block text-gray-300 hover:text-white text-sm">
+                      Privacy Screen Protector - R129-R699
+                    </Link>
+                    <div className="text-sm text-gray-400 font-medium mb-2 mt-3">iPad Accessories</div>
+                    <Link href="/shop/ipad-case" className="block text-gray-300 hover:text-white text-sm">
+                      iPad Case - R399
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/sneakers" className="block text-white hover:text-gray-300 font-medium">
+                Sneakers
+              </Link>
+
+              <div>
+                <button
+                  onClick={() => setExpandedMobile(expandedMobile === "services" ? null : "services")}
+                  className="flex items-center justify-between w-full text-white hover:text-gray-300 font-medium"
+                >
+                  Services
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${expandedMobile === "services" ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {expandedMobile === "services" && (
+                  <div className="mt-2 ml-4 space-y-2">
+                    <div className="text-sm text-gray-400 font-medium mb-2">Repair Services</div>
+                    <Link href="/repairs" className="block text-gray-300 hover:text-white text-sm">
+                      iPhone Repairs
+                    </Link>
+                    <Link href="/repairs" className="block text-gray-300 hover:text-white text-sm">
+                      Laptop Repairs
+                    </Link>
+                    <Link href="/repairs" className="block text-gray-300 hover:text-white text-sm">
+                      Screen Replacements
+                    </Link>
+                    <Link href="/repairs" className="block text-gray-300 hover:text-white text-sm">
+                      Battery Replacements
+                    </Link>
+                    <div className="bg-blue-600 rounded-lg p-3 mt-3">
+                      <div className="text-blue-100 text-sm font-medium mb-1">House Call Service</div>
+                      <div className="text-blue-200 text-xs mb-2">
+                        We come to you! Professional repairs at your location.
+                      </div>
+                      <Link
+                        href="/repairs"
+                        className="bg-blue-500 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-400"
+                      >
+                        Book Now - R49
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/contact" className="block text-white hover:text-gray-300 font-medium">
+                Support
+              </Link>
             </div>
           </div>
         )}
